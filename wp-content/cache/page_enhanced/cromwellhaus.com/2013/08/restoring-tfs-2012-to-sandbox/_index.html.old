@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>  Restoring TFS 2012 to Sandbox</title>
+<link rel="profile" href="http://gmpg.org/xfn/11" />
+<link rel="pingback" href="http://cromwellhaus.com/xmlrpc.php" />
+<link rel="alternate" type="application/rss+xml" title="Ryan Cromwell &raquo; Feed" href="http://cromwellhaus.com/feed/" />
+<link rel="alternate" type="application/rss+xml" title="Ryan Cromwell &raquo; Comments Feed" href="http://cromwellhaus.com/comments/feed/" />
+
+            <script type="text/javascript">//<![CDATA[
+            // Google Analytics for WordPress by Yoast v4.3.5 | http://yoast.com/wordpress/google-analytics/
+            var _gaq = _gaq || [];
+            _gaq.push(['_setAccount', 'UA-4332588-1']);
+				            _gaq.push(['_trackPageview']);
+            (function () {
+                var ga = document.createElement('script');
+                ga.type = 'text/javascript';
+                ga.async = true;
+                ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+
+                var s = document.getElementsByTagName('script')[0];
+                s.parentNode.insertBefore(ga, s);
+            })();
+            //]]></script>
+			<link rel="alternate" type="application/rss+xml" title="Ryan Cromwell &raquo; Restoring TFS 2012 to Sandbox Comments Feed" href="http://cromwellhaus.com/2013/08/restoring-tfs-2012-to-sandbox/feed/" />
+<link rel='stylesheet' id='pinboard-web-font-css'  href='http://fonts.googleapis.com/css?family=Open+Sans:300,300italic,regular,italic,600,600italic|Oswald:300,300italic,regular,italic,600,600italic&#038;subset=latin' type='text/css' media='all' />
+<link rel='stylesheet' id='pinboard-css'  href='http://cromwellhaus.com/wp-content/themes/pinboard/style.css' type='text/css' media='all' />
+<link rel='stylesheet' id='colorbox-css'  href='http://cromwellhaus.com/wp-content/themes/pinboard/styles/colorbox.css' type='text/css' media='all' />
+<link rel='stylesheet' id='mediaelementplayer-css'  href='http://cromwellhaus.com/wp-content/themes/pinboard/styles/mediaelementplayer.css' type='text/css' media='all' />
+	<!--[if lt IE 9]>
+	<script src="http://cromwellhaus.com/wp-content/themes/pinboard/scripts/html5.js" type="text/javascript"></script>
+	<![endif]-->
+<script type='text/javascript' src='http://cromwellhaus.com/wp-content/themes/pinboard/scripts/ios-orientationchange-fix.js'></script>
+<script type='text/javascript' src='http://cromwellhaus.com/wp-includes/js/jquery/jquery.js?ver=1.10.2'></script>
+<script type='text/javascript' src='http://cromwellhaus.com/wp-includes/js/jquery/jquery-migrate.min.js?ver=1.2.1'></script>
+<script type='text/javascript' src='http://cromwellhaus.com/wp-content/themes/pinboard/scripts/jquery.flexslider-min.js'></script>
+<script type='text/javascript' src='http://cromwellhaus.com/wp-content/themes/pinboard/scripts/fitvids.js'></script>
+<script type='text/javascript' src='http://cromwellhaus.com/wp-content/themes/pinboard/scripts/jquery.colorbox.js'></script>
+<script type='text/javascript' src='http://cromwellhaus.com/wp-includes/js/comment-reply.min.js?ver=3.8.1'></script>
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://cromwellhaus.com/xmlrpc.php?rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://cromwellhaus.com/wp-includes/wlwmanifest.xml" /> 
+<link rel='prev' title='Using HashDict.update for Keyed Reductions (aka group by) in Elixir' href='http://cromwellhaus.com/2013/07/using-hashdict-update-for-keyed-reductions-aka-group-by-in-elixir/' />
+<link rel='next' title='Elixir needs at least 4 JSON parsers' href='http://cromwellhaus.com/2013/08/elixir-needs-at-least-4-json-parsers/' />
+<meta name="generator" content="WordPress 3.8.1" />
+<link rel='canonical' href='http://cromwellhaus.com/2013/08/restoring-tfs-2012-to-sandbox/' />
+<link rel='shortlink' href='http://cromwellhaus.com/?p=1471' />
+<meta property="og:title" content="Restoring TFS 2012 to Sandbox" /><meta property="og:type" content="article" /><meta property="og:url" content="http://cromwellhaus.com/2013/08/restoring-tfs-2012-to-sandbox/" /><meta property="og:site_name" content="Ryan Cromwell" /><meta property="og:description" content="One of my clients recently asked for some help with getting their TFS server up to snuff.&#160; After getting the software itself in line, I needed to restore a TFS installation in a sandbox environment to plan and test out some significant changes to their Work Item data.&#160; It’s not &hellip;" /><script>
+/* <![CDATA[ */
+	jQuery(document).ready(function($) {
+		$('#access .menu > li > a').each(function() {
+			var title = $(this).attr('title');
+			if(typeof title !== 'undefined' && title !== false) {
+				$(this).append('<br /> <span>'+title+'</span>');
+				$(this).removeAttr('title');
+			}
+		});
+		function pinboard_move_elements(container) {
+			if( container.hasClass('onecol') ) {
+				var thumb = $('.entry-thumbnail', container);
+				if('undefined' !== typeof thumb)
+					$('.entry-container', container).before(thumb);
+				var video = $('.entry-attachment', container);
+				if('undefined' !== typeof video)
+					$('.entry-container', container).before(video);
+				var gallery = $('.post-gallery', container);
+				if('undefined' !== typeof gallery)
+					$('.entry-container', container).before(gallery);
+				var meta = $('.entry-meta', container);
+				if('undefined' !== typeof meta)
+					$('.entry-container', container).after(meta);
+			}
+		}
+		function pinboard_restore_elements(container) {
+			if( container.hasClass('onecol') ) {
+				var thumb = $('.entry-thumbnail', container);
+				if('undefined' !== typeof thumb)
+					$('.entry-header', container).after(thumb);
+				var video = $('.entry-attachment', container);
+				if('undefined' !== typeof video)
+					$('.entry-header', container).after(video);
+				var gallery = $('.post-gallery', container);
+				if('undefined' !== typeof gallery)
+					$('.entry-header', container).after(gallery);
+				var meta = $('.entry-meta', container);
+				if('undefined' !== typeof meta)
+					$('.entry-header', container).append(meta);
+				else
+					$('.entry-header', container).html(meta.html());
+			}
+		}
+		if( ($(window).width() > 960) || ($(document).width() > 960) ) {
+			// Viewport is greater than tablet: portrait
+		} else {
+			$('#content .hentry').each(function() {
+				pinboard_move_elements($(this));
+			});
+		}
+		$(window).resize(function() {
+			if( ($(window).width() > 960) || ($(document).width() > 960) ) {
+									$('.page-template-template-full-width-php #content .hentry, .page-template-template-blog-full-width-php #content .hentry, .page-template-template-blog-four-col-php #content .hentry').each(function() {
+						pinboard_restore_elements($(this));
+					});
+							} else {
+				$('#content .hentry').each(function() {
+					pinboard_move_elements($(this));
+				});
+			}
+			if( ($(window).width() > 760) || ($(document).width() > 760) ) {
+				var maxh = 0;
+				$('#access .menu > li > a').each(function() {
+					if(parseInt($(this).css('height'))>maxh) {
+						maxh = parseInt($(this).css('height'));
+					}
+				});
+				$('#access .menu > li > a').css('height', maxh);
+			} else {
+				$('#access .menu > li > a').css('height', 'auto');
+			}
+		});
+		if( ($(window).width() > 760) || ($(document).width() > 760) ) {
+			var maxh = 0;
+			$('#access .menu > li > a').each(function() {
+				var title = $(this).attr('title');
+				if(typeof title !== 'undefined' && title !== false) {
+					$(this).append('<br /> <span>'+title+'</span>');
+					$(this).removeAttr('title');
+				}
+				if(parseInt($(this).css('height'))>maxh) {
+					maxh = parseInt($(this).css('height'));
+				}
+			});
+			$('#access .menu > li > a').css('height', maxh);
+							$('#access li').mouseenter(function() {
+					$(this).children('ul').css('display', 'none').stop(true, true).fadeIn(250).css('display', 'block').children('ul').css('display', 'none');
+				});
+				$('#access li').mouseleave(function() {
+					$(this).children('ul').stop(true, true).fadeOut(250).css('display', 'block');
+				});
+					} else {
+			$('#access li').each(function() {
+				if($(this).children('ul').length)
+					$(this).append('<span class="drop-down-toggle"><span class="drop-down-arrow"></span></span>');
+			});
+			$('.drop-down-toggle').click(function() {
+				$(this).parent().children('ul').slideToggle(250);
+			});
+		}
+						$('audio,video').mediaelementplayer({
+			videoWidth: '100%',
+			videoHeight: '100%',
+			audioWidth: '100%',
+			alwaysShowControls: true,
+			features: ['playpause','progress','tracks','volume'],
+			videoVolume: 'horizontal'
+		});
+		$(".entry-attachment, .entry-content").fitVids({ customSelector: "iframe[src*='wordpress.tv'], iframe[src*='www.dailymotion.com'], iframe[src*='blip.tv'], iframe[src*='www.viddler.com']"});
+	});
+	jQuery(window).load(function() {
+					jQuery('.entry-content a[href$=".jpg"],.entry-content a[href$=".jpeg"],.entry-content a[href$=".png"],.entry-content a[href$=".gif"],a.colorbox').colorbox({
+				maxWidth: '100%',
+				maxHeight: '100%',
+			});
+			});
+/* ]]> */
+</script>
+<style type="text/css">
+																																											.gist pre { text-align: left }</style>
+<style type="text/css">
+	#site-title a,
+	#site-description {
+		color:#333333;
+	}
+</style>
+<style type="text/css" id="custom-background-css">
+body.custom-background { background-image: url('http://cromwellhaus.com/wp-content/uploads/2014/02/dark-subtle.png'); background-repeat: repeat; background-position: top left; background-attachment: scroll; }
+</style>
+</head>
+
+<body class="single single-post postid-1471 single-format-standard custom-background page-template-template-full-width-php">
+	<div id="wrapper">
+		<header id="header">
+			<div id="site-title">
+								<a class="home" href="http://cromwellhaus.com/" rel="home">Ryan Cromwell</a>
+			</div>
+							<div id="site-description">Big vision. Small changes.  Learn by shipping.</div>
+							<form role="search" method="get" id="searchform" action="http://cromwellhaus.com/" >
+	<input type="text" value="" placeholder="Search this website&#8230;" name="s" id="s" />
+	<input type="submit" id="searchsubmit" value="Search" />
+</form>			<div id="social-media-icons">
+									<a class="social-media-icon twitter" href="http://twitter.com/cromwellryan">Twitter</a>
+																		<a class="social-media-icon youtube" href="http://www.youtube.com/channel/UCulXjBNxl_oe4_gjQV1jb2Q">Vimeo</a>
+															<a class="social-media-icon linkedin" href="http://www.linkedin.com/in/cromwellryan">LinkedIn</a>
+					</div>
+				<div class="clear"></div>
+			<nav id="access">
+				<a class="nav-show" href="#access">Show Navigation</a>
+				<a class="nav-hide" href="#nogo">Hide Navigation</a>
+				<div class="menu"><ul><li class="page_item page-item-834"><a href="http://cromwellhaus.com/about/">Bio</a></li><li class="page_item page-item-801"><a href="http://cromwellhaus.com/presentations/">Presentations</a></li></ul></div>
+				<div class="clear"></div>
+			</nav><!-- #access -->
+		</header><!-- #header -->	<div id="container">
+		<section id="content" class="column onecol">
+							<article class="post-1471 post type-post status-publish format-standard hentry category-tfs tag-tfs column onecol" id="post-1471">
+					<div class="entry">
+						<header class="entry-header">
+							<h1 class="entry-title">Restoring TFS 2012 to Sandbox</h1>
+									<aside class="entry-meta">
+							<span class="entry-author-link"><a href="http://cromwellhaus.com/author/cromwellryan/" title="Posts by cromwellryan" rel="author">cromwellryan</a></span>
+									<span class="entry-date">August 16, 2013</span>
+												<span class="entry-category"><a href="http://cromwellhaus.com/category/tfs/" title="View all posts in TFS" rel="category tag">TFS</a></span>
+																		<div class="clear"></div>
+		</aside><!-- .entry-meta -->
+							</header><!-- .entry-header -->
+						<div class="entry-content">
+														<p>One of my clients recently asked for some help with getting their TFS server up to snuff.&#160; After getting the software itself in line, I needed to restore a TFS installation in a sandbox environment to plan and test out some significant changes to their Work Item data.&#160; It’s not exactly a smooth experience so lets hope this eases the day of some other poor soul.&#160; As with all things – SSDs make this a bearable duration of time.</p>
+<h4></h4>
+<h4>Step 1: Install, but don’t configure TFS 2012 Update 3</h4>
+<p>TFS server components have levels of installation doneness.&#160; Since this is a sandbox, I’m not worried about scaling out and will just install a single server.&#160; To do this I:</p>
+<li>(15 min) Install Windows Server 2012 Standard on a VM </li>
+<li>(60 min) Windows Updates… oh mighty Zeus the Updates </li>
+<li>(10 min) Wipe sweat from brow and walk around office cursing while fuming over what appears to be update 9,123,758 not budging </li>
+<li>(15 min) Lay down SQL Server 2012 even though production runs on 2008 R2.&#160; Details can be found on <a href="http://msdn.microsoft.com/en-us/library/vstudio/dd578652.aspx">Manually Install SQL Server for Team Foundation Server</a>.&#160; </li>
+<li>(10 min) Install <a href="http://www.microsoft.com/en-us/download/details.aspx?id=38185">TFS 2012 with Update 3</a>.&#160; Don’t run the configuration wizard!!! </li>
+<p>At this point you should have all the pieces of TFS, but nothing configured.&#160; TFS Administration console looks something like this:</p>
+<p><a href="http://cromwellhaus.com/wp-content/uploads/2013/08/image.png"><img title="image" style="border-left-width: 0px; border-right-width: 0px; background-image: none; border-bottom-width: 0px; padding-top: 0px; padding-left: 0px; display: inline; padding-right: 0px; border-top-width: 0px" border="0" alt="image" src="http://cromwellhaus.com/wp-content/uploads/2013/08/image_thumb.png" width="644" height="416" /></a></p>
+<p>&#160;</p>
+<h4>Step 2: Restore TFS Databases</h4>
+<p>You can use the Administration console to restore your backups if made from a scheduled TFS backup.&#160; You could also use the <a href="http://msdn.microsoft.com/en-us/library/jj620932.aspx">tfsrestore.exe</a> tool.&#160; In my case, I had some SQL Service permissions problems and disk space limitations that required me to manually restore each of the databases.</p>
+<p>&#160;<a href="http://cromwellhaus.com/wp-content/uploads/2013/08/image1.png"><img title="image" style="border-left-width: 0px; border-right-width: 0px; background-image: none; border-bottom-width: 0px; padding-top: 0px; padding-left: 0px; margin: 6px 0px 0px; display: inline; padding-right: 0px; border-top-width: 0px" border="0" alt="image" src="http://cromwellhaus.com/wp-content/uploads/2013/08/image_thumb1.png" width="155" height="244" /></a></p>
+<p>&#160;</p>
+<h4>Step 3: Change Server IDs</h4>
+<p>Since I’ll be connecting to these in a non-isolated environment and I don’t want tools getting confused I am going to be safe and change server IDs.&#160; TFS uses Guids to identify Servers and Collections.&#160; Visual Studio and other tools using the SDKs will get confused regarding local settings and caches so this is a safeguard against black magic.</p>
+<p>&#160;</p>
+<pre>TfsConfig.exe ChangeServerID /sqlinstance:localhost /databasename:Tfs_Configuration</pre>
+<h4>Step 4: Fix Accounts</h4>
+<p>My new server is not attached to any domain, let alone the one used for the production TFS.&#160; With this in mind, I need to update some accounts embedded in TFS.&#160; </p>
+<pre>TFSConfig.exe accounts /resetowner /sqlinstance:WIN-4jsv8rkkbki /databasename:Tfs_Configuration
+TFSConfig.exe accounts /add /accounttype:applicationtier /account:tfsservice &quot;/password:shhhhhh&quot; /sqlinstance:localhost /databasename:Tfs_Configuration</pre>
+<h4>Step 5: Configure TFS Application Tier</h4>
+<p><a href="http://cromwellhaus.com/wp-content/uploads/2013/08/image2.png"><img title="image" style="border-top: 0px; border-right: 0px; background-image: none; border-bottom: 0px; padding-top: 0px; padding-left: 0px; margin: 0px 6px 6px 0px; border-left: 0px; display: inline; padding-right: 0px" border="0" alt="image" src="http://cromwellhaus.com/wp-content/uploads/2013/08/image_thumb2.png" width="177" height="134" /></a></p>
+<p>From the TFS Administration Console click Application Tier and then Configure Installed Features.&#160; This will give you a number of types of configuration scenarios.&#160; We want Application Tier only which well hook up to our now restored Tfs_Configuration database (and friends).</p>
+<p>&#160;</p>
+<p>Make sure you choose the SQL Server to which you restored your databases (localhost for me).&#160; Once you get to the Application Tier settings page, this should show the service account we added in Step 4: Fix Accounts.</p>
+<p><a href="http://cromwellhaus.com/wp-content/uploads/2013/08/image3.png"><img title="image" style="border-top: 0px; border-right: 0px; background-image: none; border-bottom: 0px; padding-top: 0px; padding-left: 0px; margin: 6px 0px 0px; border-left: 0px; display: inline; padding-right: 0px" border="0" alt="image" src="http://cromwellhaus.com/wp-content/uploads/2013/08/image_thumb3.png" width="244" height="142" /></a></p>
+<p>&#160;</p>
+<p>Everything should come out green upon Verification and you can let it rip.&#160; If not, invoke <strike>Google</strike> <a href="http://duckduckgo.com">duckduckgo.com</a>-fu.&#160; </p>
+<p>&#160;</p>
+<h4>Step 6: Update Remaining Settings</h4>
+<p>There will still be a number of settings that refer to the old topology.&#160; </p>
+<p>&#160;</p>
+<p>Change the Urls to your new server:</p>
+<p><a href="http://cromwellhaus.com/wp-content/uploads/2013/08/image4.png"><img title="image" style="border-top: 0px; border-right: 0px; background-image: none; border-bottom: 0px; padding-top: 0px; padding-left: 0px; margin: 6px 0px; border-left: 0px; display: inline; padding-right: 0px" border="0" alt="image" src="http://cromwellhaus.com/wp-content/uploads/2013/08/image_thumb4.png" width="244" height="158" /></a>&#160;</p>
+<p>In this sandbox I have no need of Reporting Services or SharePoint.&#160; I just disabled both:</p>
+<p><a href="http://cromwellhaus.com/wp-content/uploads/2013/08/image5.png"><img title="image" style="border-top: 0px; border-right: 0px; background-image: none; border-bottom: 0px; padding-top: 0px; padding-left: 0px; border-left: 0px; display: inline; padding-right: 0px" border="0" alt="image" src="http://cromwellhaus.com/wp-content/uploads/2013/08/image_thumb5.png" width="244" height="158" /></a>&#160;&#160;&#160; <a href="http://cromwellhaus.com/wp-content/uploads/2013/08/image6.png"><img title="image" style="border-top: 0px; border-right: 0px; background-image: none; border-bottom: 0px; padding-top: 0px; padding-left: 0px; margin: 6px 0px 0px; border-left: 0px; display: inline; padding-right: 0px" border="0" alt="image" src="http://cromwellhaus.com/wp-content/uploads/2013/08/image_thumb6.png" width="211" height="159" /></a></p>
+<p>&#160;</p>
+<h4></h4>
+<h4>Step 7: Rest</h4>
+<p>It’s certainly not straight forward, but it’s much better than in past versions.&#160; </p>
+<p>&#160;</p>
+<p>At this point you should be able to connect to your newly restored TPC and TPs.&#160; If you find that a previously connected Visual Studio pre-selects Team Projects that were also selected in production you likely skipped Step 3.&#160; This could result in weird behavior for you in the future against production.</p>
+							<div class="clear"></div>
+						</div><!-- .entry-content -->
+						<footer class="entry-utility">
+														<div class="entry-tags"><a href="http://cromwellhaus.com/tag/tfs/" rel="tag">TFS</a></div>									<div class="social-bookmarks">
+			<p>Did you like this article? Share it with your friends!</p>
+							<div class="facebook-like">
+					<div id="fb-root"></div>
+					<script>
+						(function(d, s, id) {
+							var js, fjs = d.getElementsByTagName(s)[0];
+							if (d.getElementById(id)) return;
+							js = d.createElement(s); js.id = id;
+							js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+							fjs.parentNode.insertBefore(js, fjs);
+						}(document, 'script', 'facebook-jssdk'));
+					</script>
+					<div class="fb-like" data-href="http://cromwellhaus.com/2013/08/restoring-tfs-2012-to-sandbox/" data-send="false" data-layout="button_count" data-width="110" data-show-faces="false" data-font="arial"></div>
+				</div><!-- .facebook-like -->
+										<div class="twitter-button">
+					<a href="https://twitter.com/share" class="twitter-share-button" data-url="http://cromwellhaus.com/2013/08/restoring-tfs-2012-to-sandbox/">Tweet</a>
+					<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+				</div><!-- .twitter-button -->
+										<div class="google-plusone">
+					<div class="g-plusone" data-size="medium" data-href="http://cromwellhaus.com/2013/08/restoring-tfs-2012-to-sandbox/"></div>
+					<script type="text/javascript">
+						(function() {
+							var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+							po.src = 'https://apis.google.com/js/plusone.js';
+							var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+						})();
+					</script>
+				</div><!-- .google-plusone -->
+									<div class="clear"></div>
+		</div><!-- .social-bookmarks -->
+										<div class="entry-author">
+			<img alt='' src='http://0.gravatar.com/avatar/ef8a1e8b2845aee4bab6cbde882c89a0?s=96&amp;d=http%3A%2F%2F0.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D96&amp;r=G' class='avatar avatar-96 photo' height='96' width='96' />			<h3 class="author vcard">Written by <span class="fn"><a href="http://cromwellhaus.com/author/cromwellryan/" title="Posts by cromwellryan" rel="author">cromwellryan</a></span></h3>
+			<p class="author-bio"></p>
+			<div class="clear"></div>
+		</div><!-- .entry-author -->
+							</footer><!-- .entry-utility -->
+					</div><!-- .entry -->
+					
+<div id="disqus_thread">
+                    <div id="dsq-content">
+
+
+            <ul id="dsq-comments">
+                    <li class="comment even thread-even depth-1" id="dsq-comment-550">
+        <div id="dsq-comment-header-550" class="dsq-comment-header">
+            <cite id="dsq-cite-550">
+                <span id="dsq-author-user-550">Steve</span>
+            </cite>
+        </div>
+        <div id="dsq-comment-body-550" class="dsq-comment-body">
+            <div id="dsq-comment-message-550" class="dsq-comment-message"><p>How would these steps differ if I was cloning production TFS to a dev instance of TFS on the same domain? To eliminate cross-talk, I have a HOSTS file setup on both dev and production machines that loop back to localhost if a connection attempt is made to one of the other boxes.</p>
+</div>
+        </div>
+
+    <ul class="children">
+    <li class="comment odd alt depth-2" id="dsq-comment-552">
+        <div id="dsq-comment-header-552" class="dsq-comment-header">
+            <cite id="dsq-cite-552">
+                <span id="dsq-author-user-552">cromwellryan</span>
+            </cite>
+        </div>
+        <div id="dsq-comment-body-552" class="dsq-comment-body">
+            <div id="dsq-comment-message-552" class="dsq-comment-message"><p>Really sorry about the long delay.  I&#8217;m not in TFS mode.  As long as you&#8217;re not restoring the Configuration dbs and do an appropriate backup/restore through the tooling you should be good.  AFAIK, the attach/restore will remove all TFS configuration db instance information from the TPC.  Host files is a great idea to verify though!</p>
+</div>
+        </div>
+
+    </li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+            </ul>
+
+
+        </div>
+
+    </div>
+
+<script type="text/javascript">
+/* <![CDATA[ */
+    var disqus_url = 'http://cromwellhaus.com/2013/08/restoring-tfs-2012-to-sandbox/';
+    var disqus_identifier = '1471 http://cromwellhaus.com/?p=1471';
+    var disqus_container_id = 'disqus_thread';
+    var disqus_domain = 'disqus.com';
+    var disqus_shortname = 'cromwellhaus';
+    var disqus_title = "Restoring TFS 2012 to Sandbox";
+        var disqus_config = function () {
+        var config = this; // Access to the config object
+        config.language = '';
+
+        /*
+           All currently supported events:
+            * preData — fires just before we request for initial data
+            * preInit - fires after we get initial data but before we load any dependencies
+            * onInit  - fires when all dependencies are resolved but before dtpl template is rendered
+            * afterRender - fires when template is rendered but before we show it
+            * onReady - everything is done
+         */
+
+        config.callbacks.preData.push(function() {
+            // clear out the container (its filled for SEO/legacy purposes)
+            document.getElementById(disqus_container_id).innerHTML = '';
+        });
+                config.callbacks.onReady.push(function() {
+            // sync comments in the background so we don't block the page
+            var script = document.createElement('script');
+            script.async = true;
+            script.src = '?cf_action=sync_comments&post_id=1471';
+
+            var firstScript = document.getElementsByTagName( "script" )[0];
+            firstScript.parentNode.insertBefore(script, firstScript);
+        });
+                    };
+/* ]]> */
+</script>
+
+<script type="text/javascript">
+/* <![CDATA[ */
+    var DsqLocal = {
+        'trackbacks': [
+        ],
+        'trackback_url': "http:\/\/cromwellhaus.com\/2013\/08\/restoring-tfs-2012-to-sandbox\/trackback\/"    };
+/* ]]> */
+</script>
+
+<script type="text/javascript">
+/* <![CDATA[ */
+(function() {
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.' + 'disqus.com' + '/embed.js?pname=wordpress&pver=2.74';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();
+/* ]]> */
+</script>
+				</article><!-- .post -->
+					</section><!-- #content -->
+			</div><!-- #container -->
+				<div id="footer">
+						<div id="copyright">
+				<p class="copyright twocol">© 2014 Ryan Cromwell</p>
+									<p class="credits twocol">
+																															Powered by <a href="http://www.onedesigns.com/wordpress-themes/pinboard" title="Pinboard Theme">Pinboard Theme</a> by <a href="http://www.onedesigns.com/" title="One Designs">One Designs</a>											</p>
+								<div class="clear"></div>
+			</div><!-- #copyright -->
+		</div><!-- #footer -->
+	</div><!-- #wrapper -->
+<script type='text/javascript'>
+/* <![CDATA[ */
+var mejsL10n = {"language":"en-US","strings":{"Close":"Close","Fullscreen":"Fullscreen","Download File":"Download File","Download Video":"Download Video","Play\/Pause":"Play\/Pause","Mute Toggle":"Mute Toggle","None":"None","Turn off Fullscreen":"Turn off Fullscreen","Go Fullscreen":"Go Fullscreen","Unmute":"Unmute","Mute":"Mute","Captions\/Subtitles":"Captions\/Subtitles"}};
+/* ]]> */
+</script>
+<script type='text/javascript' src='http://cromwellhaus.com/wp-includes/js/mediaelement/mediaelement-and-player.min.js?ver=2.13.0'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var _wpmejsSettings = {"pluginPath":"\/wp-includes\/js\/mediaelement\/"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='http://cromwellhaus.com/wp-includes/js/mediaelement/wp-mediaelement.js?ver=3.8.1'></script>
+</body>
+</html>
+<!-- Performance optimized by W3 Total Cache. Learn more: http://www.w3-edge.com/wordpress-plugins/
+
+Page Caching using disk: enhanced
+
+ Served from: cromwellhaus.com @ 2014-02-23 18:18:59 by W3 Total Cache -->

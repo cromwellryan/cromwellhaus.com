@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>  Expand Your Normal</title>
+<link rel="profile" href="http://gmpg.org/xfn/11" />
+<link rel="pingback" href="http://cromwellhaus.com/xmlrpc.php" />
+<link rel="alternate" type="application/rss+xml" title="Ryan Cromwell &raquo; Feed" href="http://cromwellhaus.com/feed/" />
+<link rel="alternate" type="application/rss+xml" title="Ryan Cromwell &raquo; Comments Feed" href="http://cromwellhaus.com/comments/feed/" />
+
+            <script type="text/javascript">//<![CDATA[
+            // Google Analytics for WordPress by Yoast v4.3.5 | http://yoast.com/wordpress/google-analytics/
+            var _gaq = _gaq || [];
+            _gaq.push(['_setAccount', 'UA-4332588-1']);
+				            _gaq.push(['_trackPageview']);
+            (function () {
+                var ga = document.createElement('script');
+                ga.type = 'text/javascript';
+                ga.async = true;
+                ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+
+                var s = document.getElementsByTagName('script')[0];
+                s.parentNode.insertBefore(ga, s);
+            })();
+            //]]></script>
+			<link rel="alternate" type="application/rss+xml" title="Ryan Cromwell &raquo; Expand Your Normal Comments Feed" href="http://cromwellhaus.com/2012/01/expand-your-normal/feed/" />
+<link rel='stylesheet' id='pinboard-web-font-css'  href='http://fonts.googleapis.com/css?family=Open+Sans:300,300italic,regular,italic,600,600italic|Oswald:300,300italic,regular,italic,600,600italic&#038;subset=latin' type='text/css' media='all' />
+<link rel='stylesheet' id='pinboard-css'  href='http://cromwellhaus.com/wp-content/themes/pinboard/style.css' type='text/css' media='all' />
+<link rel='stylesheet' id='colorbox-css'  href='http://cromwellhaus.com/wp-content/themes/pinboard/styles/colorbox.css' type='text/css' media='all' />
+<link rel='stylesheet' id='mediaelementplayer-css'  href='http://cromwellhaus.com/wp-content/themes/pinboard/styles/mediaelementplayer.css' type='text/css' media='all' />
+	<!--[if lt IE 9]>
+	<script src="http://cromwellhaus.com/wp-content/themes/pinboard/scripts/html5.js" type="text/javascript"></script>
+	<![endif]-->
+<script type='text/javascript' src='http://cromwellhaus.com/wp-content/themes/pinboard/scripts/ios-orientationchange-fix.js'></script>
+<script type='text/javascript' src='http://cromwellhaus.com/wp-includes/js/jquery/jquery.js?ver=1.10.2'></script>
+<script type='text/javascript' src='http://cromwellhaus.com/wp-includes/js/jquery/jquery-migrate.min.js?ver=1.2.1'></script>
+<script type='text/javascript' src='http://cromwellhaus.com/wp-content/themes/pinboard/scripts/jquery.flexslider-min.js'></script>
+<script type='text/javascript' src='http://cromwellhaus.com/wp-content/themes/pinboard/scripts/fitvids.js'></script>
+<script type='text/javascript' src='http://cromwellhaus.com/wp-content/themes/pinboard/scripts/jquery.colorbox.js'></script>
+<script type='text/javascript' src='http://cromwellhaus.com/wp-includes/js/comment-reply.min.js?ver=3.8.1'></script>
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://cromwellhaus.com/xmlrpc.php?rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://cromwellhaus.com/wp-includes/wlwmanifest.xml" /> 
+<link rel='prev' title='Time box: Safety zone for Creativity, Cleanliness, and Sausage Stuffing' href='http://cromwellhaus.com/2012/01/time-box-safety-zone-for-creativity-cleanliness-and-sausage-stuffing/' />
+<link rel='next' title='Code Kata Constraints' href='http://cromwellhaus.com/2012/01/code-kata-constraints/' />
+<meta name="generator" content="WordPress 3.8.1" />
+<link rel='canonical' href='http://cromwellhaus.com/2012/01/expand-your-normal/' />
+<link rel='shortlink' href='http://cromwellhaus.com/?p=988' />
+<meta property="og:title" content="Expand Your Normal" /><meta property="og:type" content="article" /><meta property="og:url" content="http://cromwellhaus.com/2012/01/expand-your-normal/" /><meta property="og:site_name" content="Ryan Cromwell" /><meta property="og:description" content="I went for beers with a couple of coworkers today and a question came up that I get a lot.&#160; What’s the point of a kata?&#160; That’s an answer for you to come up with for yourself, but I’ll let you in on my secret obsession: I want to expand &hellip;" /><script>
+/* <![CDATA[ */
+	jQuery(document).ready(function($) {
+		$('#access .menu > li > a').each(function() {
+			var title = $(this).attr('title');
+			if(typeof title !== 'undefined' && title !== false) {
+				$(this).append('<br /> <span>'+title+'</span>');
+				$(this).removeAttr('title');
+			}
+		});
+		function pinboard_move_elements(container) {
+			if( container.hasClass('onecol') ) {
+				var thumb = $('.entry-thumbnail', container);
+				if('undefined' !== typeof thumb)
+					$('.entry-container', container).before(thumb);
+				var video = $('.entry-attachment', container);
+				if('undefined' !== typeof video)
+					$('.entry-container', container).before(video);
+				var gallery = $('.post-gallery', container);
+				if('undefined' !== typeof gallery)
+					$('.entry-container', container).before(gallery);
+				var meta = $('.entry-meta', container);
+				if('undefined' !== typeof meta)
+					$('.entry-container', container).after(meta);
+			}
+		}
+		function pinboard_restore_elements(container) {
+			if( container.hasClass('onecol') ) {
+				var thumb = $('.entry-thumbnail', container);
+				if('undefined' !== typeof thumb)
+					$('.entry-header', container).after(thumb);
+				var video = $('.entry-attachment', container);
+				if('undefined' !== typeof video)
+					$('.entry-header', container).after(video);
+				var gallery = $('.post-gallery', container);
+				if('undefined' !== typeof gallery)
+					$('.entry-header', container).after(gallery);
+				var meta = $('.entry-meta', container);
+				if('undefined' !== typeof meta)
+					$('.entry-header', container).append(meta);
+				else
+					$('.entry-header', container).html(meta.html());
+			}
+		}
+		if( ($(window).width() > 960) || ($(document).width() > 960) ) {
+			// Viewport is greater than tablet: portrait
+		} else {
+			$('#content .hentry').each(function() {
+				pinboard_move_elements($(this));
+			});
+		}
+		$(window).resize(function() {
+			if( ($(window).width() > 960) || ($(document).width() > 960) ) {
+									$('.page-template-template-full-width-php #content .hentry, .page-template-template-blog-full-width-php #content .hentry, .page-template-template-blog-four-col-php #content .hentry').each(function() {
+						pinboard_restore_elements($(this));
+					});
+							} else {
+				$('#content .hentry').each(function() {
+					pinboard_move_elements($(this));
+				});
+			}
+			if( ($(window).width() > 760) || ($(document).width() > 760) ) {
+				var maxh = 0;
+				$('#access .menu > li > a').each(function() {
+					if(parseInt($(this).css('height'))>maxh) {
+						maxh = parseInt($(this).css('height'));
+					}
+				});
+				$('#access .menu > li > a').css('height', maxh);
+			} else {
+				$('#access .menu > li > a').css('height', 'auto');
+			}
+		});
+		if( ($(window).width() > 760) || ($(document).width() > 760) ) {
+			var maxh = 0;
+			$('#access .menu > li > a').each(function() {
+				var title = $(this).attr('title');
+				if(typeof title !== 'undefined' && title !== false) {
+					$(this).append('<br /> <span>'+title+'</span>');
+					$(this).removeAttr('title');
+				}
+				if(parseInt($(this).css('height'))>maxh) {
+					maxh = parseInt($(this).css('height'));
+				}
+			});
+			$('#access .menu > li > a').css('height', maxh);
+							$('#access li').mouseenter(function() {
+					$(this).children('ul').css('display', 'none').stop(true, true).fadeIn(250).css('display', 'block').children('ul').css('display', 'none');
+				});
+				$('#access li').mouseleave(function() {
+					$(this).children('ul').stop(true, true).fadeOut(250).css('display', 'block');
+				});
+					} else {
+			$('#access li').each(function() {
+				if($(this).children('ul').length)
+					$(this).append('<span class="drop-down-toggle"><span class="drop-down-arrow"></span></span>');
+			});
+			$('.drop-down-toggle').click(function() {
+				$(this).parent().children('ul').slideToggle(250);
+			});
+		}
+						$('audio,video').mediaelementplayer({
+			videoWidth: '100%',
+			videoHeight: '100%',
+			audioWidth: '100%',
+			alwaysShowControls: true,
+			features: ['playpause','progress','tracks','volume'],
+			videoVolume: 'horizontal'
+		});
+		$(".entry-attachment, .entry-content").fitVids({ customSelector: "iframe[src*='wordpress.tv'], iframe[src*='www.dailymotion.com'], iframe[src*='blip.tv'], iframe[src*='www.viddler.com']"});
+	});
+	jQuery(window).load(function() {
+					jQuery('.entry-content a[href$=".jpg"],.entry-content a[href$=".jpeg"],.entry-content a[href$=".png"],.entry-content a[href$=".gif"],a.colorbox').colorbox({
+				maxWidth: '100%',
+				maxHeight: '100%',
+			});
+			});
+/* ]]> */
+</script>
+<style type="text/css">
+																																											.gist pre { text-align: left }</style>
+<style type="text/css">
+	#site-title a,
+	#site-description {
+		color:#333333;
+	}
+</style>
+<style type="text/css" id="custom-background-css">
+body.custom-background { background-image: url('http://cromwellhaus.com/wp-content/uploads/2014/02/dark-subtle.png'); background-repeat: repeat; background-position: top left; background-attachment: scroll; }
+</style>
+</head>
+
+<body class="single single-post postid-988 single-format-standard custom-background page-template-template-full-width-php">
+	<div id="wrapper">
+		<header id="header">
+			<div id="site-title">
+								<a class="home" href="http://cromwellhaus.com/" rel="home">Ryan Cromwell</a>
+			</div>
+							<div id="site-description">Big vision. Small changes.  Learn by shipping.</div>
+							<form role="search" method="get" id="searchform" action="http://cromwellhaus.com/" >
+	<input type="text" value="" placeholder="Search this website&#8230;" name="s" id="s" />
+	<input type="submit" id="searchsubmit" value="Search" />
+</form>			<div id="social-media-icons">
+									<a class="social-media-icon twitter" href="http://twitter.com/cromwellryan">Twitter</a>
+																		<a class="social-media-icon youtube" href="http://www.youtube.com/channel/UCulXjBNxl_oe4_gjQV1jb2Q">Vimeo</a>
+															<a class="social-media-icon linkedin" href="http://www.linkedin.com/in/cromwellryan">LinkedIn</a>
+					</div>
+				<div class="clear"></div>
+			<nav id="access">
+				<a class="nav-show" href="#access">Show Navigation</a>
+				<a class="nav-hide" href="#nogo">Hide Navigation</a>
+				<div class="menu"><ul><li class="page_item page-item-834"><a href="http://cromwellhaus.com/about/">Bio</a></li><li class="page_item page-item-801"><a href="http://cromwellhaus.com/presentations/">Presentations</a></li></ul></div>
+				<div class="clear"></div>
+			</nav><!-- #access -->
+		</header><!-- #header -->	<div id="container">
+		<section id="content" class="column onecol">
+							<article class="post-988 post type-post status-publish format-standard hentry category-craftsmanship tag-agile column onecol" id="post-988">
+					<div class="entry">
+						<header class="entry-header">
+							<h1 class="entry-title">Expand Your Normal</h1>
+									<aside class="entry-meta">
+							<span class="entry-author-link"><a href="http://cromwellhaus.com/author/cromwellryan/" title="Posts by cromwellryan" rel="author">cromwellryan</a></span>
+									<span class="entry-date">January 27, 2012</span>
+												<span class="entry-category"><a href="http://cromwellhaus.com/category/craftsmanship/" title="View all posts in Craftsmanship" rel="category tag">Craftsmanship</a></span>
+																		<div class="clear"></div>
+		</aside><!-- .entry-meta -->
+							</header><!-- .entry-header -->
+						<div class="entry-content">
+														<p>I went for beers with a couple of coworkers today and a question came up that I get a lot.&#160; What’s the point of a <a href="http://daytoncleancoders.com" target="_blank">kata</a>?&#160; That’s an answer for you to come up with for yourself, but I’ll let you in on my secret obsession: I want to expand my normal.</p>
+<p>TL;DR</p>
+<p>I have an insatiable thirst for new information.&#160; It can be quite frustrating and, at times, debilitating.&#160; The neat thing about new information, is it changes what you consider normal.&#160; Common sense is a bunch of crap.&#160; Using a fork is common sense… until you move to India.&#160; We should all move to India (or vice versa) for a while.</p>
+<p>Not to long ago someone described an art course in which many of the lessons included drawing 50 different types of circles or straight lines.&#160; I imagine around 10 or 20 you start struggling a wee bit.&#160; I was reminded of this while reading <a href="https://twitter.com/holman" target="_blank">Zach Holman’s</a> <a href="http://zachholman.com/posts/slide-design-for-developers/" target="_blank">Slide Design for Developers</a>.&#160; He writes:</p>
+<blockquote><p>I took one design class in college. One of the most fascinating assignments they gave us was a study of shape: you get one letter, in one typeface… do something with it. The idea was that <u>the severe limitation forced you to be creative</u> with duplication, rotation, scale, alignment, and whitespace.</p>
+</blockquote>
+<p>Katas give us a silly background story like <a href="http://onestepback.org/vital_testing/" target="_blank">Triangle Classification</a>, <a href="http://codingdojo.org/cgi-bin/wiki.pl?KataRomanNumerals">Roman Numerals</a>, or <a href="http://codingdojo.org/cgi-bin/wiki.pl?KataPotter" target="_blank">Harry Potter</a>, but those aren’t the point.&#160; The point is not making the next test pass.&#160; In fact, don’t write any tests next time.&#160; They’re getting in your way.&#160; Pick some other area that you feel comfortable in and come up with a constraint outside your Normal so that when you’re done you’ve moved normal a little bit.</p>
+							<div class="clear"></div>
+						</div><!-- .entry-content -->
+						<footer class="entry-utility">
+														<div class="entry-tags"><a href="http://cromwellhaus.com/tag/agile/" rel="tag">Agile</a></div>									<div class="social-bookmarks">
+			<p>Did you like this article? Share it with your friends!</p>
+							<div class="facebook-like">
+					<div id="fb-root"></div>
+					<script>
+						(function(d, s, id) {
+							var js, fjs = d.getElementsByTagName(s)[0];
+							if (d.getElementById(id)) return;
+							js = d.createElement(s); js.id = id;
+							js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+							fjs.parentNode.insertBefore(js, fjs);
+						}(document, 'script', 'facebook-jssdk'));
+					</script>
+					<div class="fb-like" data-href="http://cromwellhaus.com/2012/01/expand-your-normal/" data-send="false" data-layout="button_count" data-width="110" data-show-faces="false" data-font="arial"></div>
+				</div><!-- .facebook-like -->
+										<div class="twitter-button">
+					<a href="https://twitter.com/share" class="twitter-share-button" data-url="http://cromwellhaus.com/2012/01/expand-your-normal/">Tweet</a>
+					<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+				</div><!-- .twitter-button -->
+										<div class="google-plusone">
+					<div class="g-plusone" data-size="medium" data-href="http://cromwellhaus.com/2012/01/expand-your-normal/"></div>
+					<script type="text/javascript">
+						(function() {
+							var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+							po.src = 'https://apis.google.com/js/plusone.js';
+							var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+						})();
+					</script>
+				</div><!-- .google-plusone -->
+									<div class="clear"></div>
+		</div><!-- .social-bookmarks -->
+										<div class="entry-author">
+			<img alt='' src='http://0.gravatar.com/avatar/ef8a1e8b2845aee4bab6cbde882c89a0?s=96&amp;d=http%3A%2F%2F0.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D96&amp;r=G' class='avatar avatar-96 photo' height='96' width='96' />			<h3 class="author vcard">Written by <span class="fn"><a href="http://cromwellhaus.com/author/cromwellryan/" title="Posts by cromwellryan" rel="author">cromwellryan</a></span></h3>
+			<p class="author-bio"></p>
+			<div class="clear"></div>
+		</div><!-- .entry-author -->
+							</footer><!-- .entry-utility -->
+					</div><!-- .entry -->
+					
+<div id="disqus_thread">
+                    <div id="dsq-content">
+
+
+            <ul id="dsq-comments">
+                    <li class="comment even thread-even depth-1" id="dsq-comment-216">
+        <div id="dsq-comment-header-216" class="dsq-comment-header">
+            <cite id="dsq-cite-216">
+                <span id="dsq-author-user-216">Seth Petry-Johnson</span>
+            </cite>
+        </div>
+        <div id="dsq-comment-body-216" class="dsq-comment-body">
+            <div id="dsq-comment-message-216" class="dsq-comment-message"><p>I often forget how much just participating in community (conferences, twitter, blogs like this) moves &#8220;normal&#8221; for me, and that developers without those experiences might not share my worldview. </p>
+<p>I&#8217;ve been trying to help a client in the DC area hire a senior developer or architect. Its amazing (shocking?) to me how these candidates, who are intelligent and experienced in many ways but not involved in the dev community, are getting by with the tools, techniques and processes that I now take as a given.I guess my point is, don&#8217;t take for granted that everyone else has the same &#8220;normal&#8221; that you do. Everyone is on their own trajectory and its a lot easier to communicate effectively when we&#8217;re mindful of that! </p>
+</div>
+        </div>
+
+    <ul class="children">
+    <li class="comment odd alt depth-2" id="dsq-comment-217">
+        <div id="dsq-comment-header-217" class="dsq-comment-header">
+            <cite id="dsq-cite-217">
+http://twitter.com/cromwellryan                <span id="dsq-author-user-217">Ryan Cromwell</span>
+            </cite>
+        </div>
+        <div id="dsq-comment-body-217" class="dsq-comment-body">
+            <div id="dsq-comment-message-217" class="dsq-comment-message"><p>Agreed.  Acknowledging that everyone is where they are and that the opportunity we have is to create a discussion dynamic in which we both end up in a better place is far more effective.  And fun.</p>
+</div>
+        </div>
+
+    </li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+            </ul>
+
+
+        </div>
+
+    </div>
+
+<script type="text/javascript">
+/* <![CDATA[ */
+    var disqus_url = 'http://cromwellhaus.com/2012/01/expand-your-normal/';
+    var disqus_identifier = '988 http://blog.cromwellhaus.com/?p=988';
+    var disqus_container_id = 'disqus_thread';
+    var disqus_domain = 'disqus.com';
+    var disqus_shortname = 'cromwellhaus';
+    var disqus_title = "Expand Your Normal";
+        var disqus_config = function () {
+        var config = this; // Access to the config object
+        config.language = '';
+
+        /*
+           All currently supported events:
+            * preData — fires just before we request for initial data
+            * preInit - fires after we get initial data but before we load any dependencies
+            * onInit  - fires when all dependencies are resolved but before dtpl template is rendered
+            * afterRender - fires when template is rendered but before we show it
+            * onReady - everything is done
+         */
+
+        config.callbacks.preData.push(function() {
+            // clear out the container (its filled for SEO/legacy purposes)
+            document.getElementById(disqus_container_id).innerHTML = '';
+        });
+                config.callbacks.onReady.push(function() {
+            // sync comments in the background so we don't block the page
+            var script = document.createElement('script');
+            script.async = true;
+            script.src = '?cf_action=sync_comments&post_id=988';
+
+            var firstScript = document.getElementsByTagName( "script" )[0];
+            firstScript.parentNode.insertBefore(script, firstScript);
+        });
+                    };
+/* ]]> */
+</script>
+
+<script type="text/javascript">
+/* <![CDATA[ */
+    var DsqLocal = {
+        'trackbacks': [
+        ],
+        'trackback_url': "http:\/\/cromwellhaus.com\/2012\/01\/expand-your-normal\/trackback\/"    };
+/* ]]> */
+</script>
+
+<script type="text/javascript">
+/* <![CDATA[ */
+(function() {
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.' + 'disqus.com' + '/embed.js?pname=wordpress&pver=2.74';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();
+/* ]]> */
+</script>
+				</article><!-- .post -->
+					</section><!-- #content -->
+			</div><!-- #container -->
+				<div id="footer">
+						<div id="copyright">
+				<p class="copyright twocol">© 2014 Ryan Cromwell</p>
+									<p class="credits twocol">
+																															Powered by <a href="http://www.onedesigns.com/wordpress-themes/pinboard" title="Pinboard Theme">Pinboard Theme</a> by <a href="http://www.onedesigns.com/" title="One Designs">One Designs</a>											</p>
+								<div class="clear"></div>
+			</div><!-- #copyright -->
+		</div><!-- #footer -->
+	</div><!-- #wrapper -->
+<script type='text/javascript'>
+/* <![CDATA[ */
+var mejsL10n = {"language":"en-US","strings":{"Close":"Close","Fullscreen":"Fullscreen","Download File":"Download File","Download Video":"Download Video","Play\/Pause":"Play\/Pause","Mute Toggle":"Mute Toggle","None":"None","Turn off Fullscreen":"Turn off Fullscreen","Go Fullscreen":"Go Fullscreen","Unmute":"Unmute","Mute":"Mute","Captions\/Subtitles":"Captions\/Subtitles"}};
+/* ]]> */
+</script>
+<script type='text/javascript' src='http://cromwellhaus.com/wp-includes/js/mediaelement/mediaelement-and-player.min.js?ver=2.13.0'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var _wpmejsSettings = {"pluginPath":"\/wp-includes\/js\/mediaelement\/"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='http://cromwellhaus.com/wp-includes/js/mediaelement/wp-mediaelement.js?ver=3.8.1'></script>
+</body>
+</html>
+<!-- Performance optimized by W3 Total Cache. Learn more: http://www.w3-edge.com/wordpress-plugins/
+
+Page Caching using disk: enhanced
+
+ Served from: cromwellhaus.com @ 2014-02-23 19:49:11 by W3 Total Cache -->

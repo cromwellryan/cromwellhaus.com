@@ -1,0 +1,805 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>  Grouping is crazy easy in WPF</title>
+<link rel="profile" href="http://gmpg.org/xfn/11" />
+<link rel="pingback" href="http://cromwellhaus.com/xmlrpc.php" />
+<link rel="alternate" type="application/rss+xml" title="Ryan Cromwell &raquo; Feed" href="http://cromwellhaus.com/feed/" />
+<link rel="alternate" type="application/rss+xml" title="Ryan Cromwell &raquo; Comments Feed" href="http://cromwellhaus.com/comments/feed/" />
+
+            <script type="text/javascript">//<![CDATA[
+            // Google Analytics for WordPress by Yoast v4.3.5 | http://yoast.com/wordpress/google-analytics/
+            var _gaq = _gaq || [];
+            _gaq.push(['_setAccount', 'UA-4332588-1']);
+				            _gaq.push(['_trackPageview']);
+            (function () {
+                var ga = document.createElement('script');
+                ga.type = 'text/javascript';
+                ga.async = true;
+                ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+
+                var s = document.getElementsByTagName('script')[0];
+                s.parentNode.insertBefore(ga, s);
+            })();
+            //]]></script>
+			<link rel="alternate" type="application/rss+xml" title="Ryan Cromwell &raquo; Grouping is crazy easy in WPF Comments Feed" href="http://cromwellhaus.com/2010/03/grouping-is-crazy-easy-in-wpf/feed/" />
+<link rel='stylesheet' id='pinboard-web-font-css'  href='http://fonts.googleapis.com/css?family=Open+Sans:300,300italic,regular,italic,600,600italic|Oswald:300,300italic,regular,italic,600,600italic&#038;subset=latin' type='text/css' media='all' />
+<link rel='stylesheet' id='pinboard-css'  href='http://cromwellhaus.com/wp-content/themes/pinboard/style.css' type='text/css' media='all' />
+<link rel='stylesheet' id='colorbox-css'  href='http://cromwellhaus.com/wp-content/themes/pinboard/styles/colorbox.css' type='text/css' media='all' />
+<link rel='stylesheet' id='mediaelementplayer-css'  href='http://cromwellhaus.com/wp-content/themes/pinboard/styles/mediaelementplayer.css' type='text/css' media='all' />
+	<!--[if lt IE 9]>
+	<script src="http://cromwellhaus.com/wp-content/themes/pinboard/scripts/html5.js" type="text/javascript"></script>
+	<![endif]-->
+<script type='text/javascript' src='http://cromwellhaus.com/wp-content/themes/pinboard/scripts/ios-orientationchange-fix.js'></script>
+<script type='text/javascript' src='http://cromwellhaus.com/wp-includes/js/jquery/jquery.js?ver=1.10.2'></script>
+<script type='text/javascript' src='http://cromwellhaus.com/wp-includes/js/jquery/jquery-migrate.min.js?ver=1.2.1'></script>
+<script type='text/javascript' src='http://cromwellhaus.com/wp-content/themes/pinboard/scripts/jquery.flexslider-min.js'></script>
+<script type='text/javascript' src='http://cromwellhaus.com/wp-content/themes/pinboard/scripts/fitvids.js'></script>
+<script type='text/javascript' src='http://cromwellhaus.com/wp-content/themes/pinboard/scripts/jquery.colorbox.js'></script>
+<script type='text/javascript' src='http://cromwellhaus.com/wp-includes/js/comment-reply.min.js?ver=3.8.1'></script>
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://cromwellhaus.com/xmlrpc.php?rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://cromwellhaus.com/wp-includes/wlwmanifest.xml" /> 
+<link rel='prev' title='Source Control Smackdown 2009' href='http://cromwellhaus.com/2009/12/source-control-smackdown-2009/' />
+<link rel='next' title='Kentucky Briefings April 15th and 22nd' href='http://cromwellhaus.com/2010/04/kentucky-briefings-april-15th-and-22nd/' />
+<meta name="generator" content="WordPress 3.8.1" />
+<link rel='canonical' href='http://cromwellhaus.com/2010/03/grouping-is-crazy-easy-in-wpf/' />
+<link rel='shortlink' href='http://cromwellhaus.com/?p=773' />
+<meta property="og:title" content="Grouping is crazy easy in WPF" /><meta property="og:type" content="article" /><meta property="og:url" content="http://cromwellhaus.com/2010/03/grouping-is-crazy-easy-in-wpf/" /><meta property="og:site_name" content="Ryan Cromwell" /><meta property="og:description" content="Lots of people struggle with grouping data and when they do, the brut force method normally takes over and we start creating some crazy super structure to organize data and then do something like put a List inside of a List or a Grid inside of a list.&#160; Just think &hellip;" /><script>
+/* <![CDATA[ */
+	jQuery(document).ready(function($) {
+		$('#access .menu > li > a').each(function() {
+			var title = $(this).attr('title');
+			if(typeof title !== 'undefined' && title !== false) {
+				$(this).append('<br /> <span>'+title+'</span>');
+				$(this).removeAttr('title');
+			}
+		});
+		function pinboard_move_elements(container) {
+			if( container.hasClass('onecol') ) {
+				var thumb = $('.entry-thumbnail', container);
+				if('undefined' !== typeof thumb)
+					$('.entry-container', container).before(thumb);
+				var video = $('.entry-attachment', container);
+				if('undefined' !== typeof video)
+					$('.entry-container', container).before(video);
+				var gallery = $('.post-gallery', container);
+				if('undefined' !== typeof gallery)
+					$('.entry-container', container).before(gallery);
+				var meta = $('.entry-meta', container);
+				if('undefined' !== typeof meta)
+					$('.entry-container', container).after(meta);
+			}
+		}
+		function pinboard_restore_elements(container) {
+			if( container.hasClass('onecol') ) {
+				var thumb = $('.entry-thumbnail', container);
+				if('undefined' !== typeof thumb)
+					$('.entry-header', container).after(thumb);
+				var video = $('.entry-attachment', container);
+				if('undefined' !== typeof video)
+					$('.entry-header', container).after(video);
+				var gallery = $('.post-gallery', container);
+				if('undefined' !== typeof gallery)
+					$('.entry-header', container).after(gallery);
+				var meta = $('.entry-meta', container);
+				if('undefined' !== typeof meta)
+					$('.entry-header', container).append(meta);
+				else
+					$('.entry-header', container).html(meta.html());
+			}
+		}
+		if( ($(window).width() > 960) || ($(document).width() > 960) ) {
+			// Viewport is greater than tablet: portrait
+		} else {
+			$('#content .hentry').each(function() {
+				pinboard_move_elements($(this));
+			});
+		}
+		$(window).resize(function() {
+			if( ($(window).width() > 960) || ($(document).width() > 960) ) {
+									$('.page-template-template-full-width-php #content .hentry, .page-template-template-blog-full-width-php #content .hentry, .page-template-template-blog-four-col-php #content .hentry').each(function() {
+						pinboard_restore_elements($(this));
+					});
+							} else {
+				$('#content .hentry').each(function() {
+					pinboard_move_elements($(this));
+				});
+			}
+			if( ($(window).width() > 760) || ($(document).width() > 760) ) {
+				var maxh = 0;
+				$('#access .menu > li > a').each(function() {
+					if(parseInt($(this).css('height'))>maxh) {
+						maxh = parseInt($(this).css('height'));
+					}
+				});
+				$('#access .menu > li > a').css('height', maxh);
+			} else {
+				$('#access .menu > li > a').css('height', 'auto');
+			}
+		});
+		if( ($(window).width() > 760) || ($(document).width() > 760) ) {
+			var maxh = 0;
+			$('#access .menu > li > a').each(function() {
+				var title = $(this).attr('title');
+				if(typeof title !== 'undefined' && title !== false) {
+					$(this).append('<br /> <span>'+title+'</span>');
+					$(this).removeAttr('title');
+				}
+				if(parseInt($(this).css('height'))>maxh) {
+					maxh = parseInt($(this).css('height'));
+				}
+			});
+			$('#access .menu > li > a').css('height', maxh);
+							$('#access li').mouseenter(function() {
+					$(this).children('ul').css('display', 'none').stop(true, true).fadeIn(250).css('display', 'block').children('ul').css('display', 'none');
+				});
+				$('#access li').mouseleave(function() {
+					$(this).children('ul').stop(true, true).fadeOut(250).css('display', 'block');
+				});
+					} else {
+			$('#access li').each(function() {
+				if($(this).children('ul').length)
+					$(this).append('<span class="drop-down-toggle"><span class="drop-down-arrow"></span></span>');
+			});
+			$('.drop-down-toggle').click(function() {
+				$(this).parent().children('ul').slideToggle(250);
+			});
+		}
+						$('audio,video').mediaelementplayer({
+			videoWidth: '100%',
+			videoHeight: '100%',
+			audioWidth: '100%',
+			alwaysShowControls: true,
+			features: ['playpause','progress','tracks','volume'],
+			videoVolume: 'horizontal'
+		});
+		$(".entry-attachment, .entry-content").fitVids({ customSelector: "iframe[src*='wordpress.tv'], iframe[src*='www.dailymotion.com'], iframe[src*='blip.tv'], iframe[src*='www.viddler.com']"});
+	});
+	jQuery(window).load(function() {
+					jQuery('.entry-content a[href$=".jpg"],.entry-content a[href$=".jpeg"],.entry-content a[href$=".png"],.entry-content a[href$=".gif"],a.colorbox').colorbox({
+				maxWidth: '100%',
+				maxHeight: '100%',
+			});
+			});
+/* ]]> */
+</script>
+<style type="text/css">
+																																											.gist pre { text-align: left }</style>
+<style type="text/css">
+	#site-title a,
+	#site-description {
+		color:#333333;
+	}
+</style>
+<style type="text/css" id="custom-background-css">
+body.custom-background { background-image: url('http://cromwellhaus.com/wp-content/themes/pinboard/images/bg.jpg'); background-repeat: repeat; background-position: top left; background-attachment: scroll; }
+</style>
+</head>
+
+<body class="single single-post postid-773 single-format-standard custom-background page-template-template-full-width-php">
+	<div id="wrapper">
+		<header id="header">
+			<div id="site-title">
+								<a class="home" href="http://cromwellhaus.com/" rel="home">Ryan Cromwell</a>
+			</div>
+							<div id="site-description">Big vision. Small changes.  Learn by shipping.</div>
+							<form role="search" method="get" id="searchform" action="http://cromwellhaus.com/" >
+	<input type="text" value="" placeholder="Search this website&#8230;" name="s" id="s" />
+	<input type="submit" id="searchsubmit" value="Search" />
+</form>			<div id="social-media-icons">
+									<a class="social-media-icon twitter" href="http://twitter.com/cromwellryan">Twitter</a>
+																		<a class="social-media-icon youtube" href="http://www.youtube.com/channel/UCulXjBNxl_oe4_gjQV1jb2Q">Vimeo</a>
+															<a class="social-media-icon linkedin" href="http://www.linkedin.com/in/cromwellryan">LinkedIn</a>
+					</div>
+				<div class="clear"></div>
+			<nav id="access">
+				<a class="nav-show" href="#access">Show Navigation</a>
+				<a class="nav-hide" href="#nogo">Hide Navigation</a>
+				<div class="menu-menu-1-container"><ul id="menu-menu-1" class="menu"><li id="menu-item-1520" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1520"><a title="about little ol&#8217; me" href="http://cromwellhaus.com/about/">Bio</a></li>
+<li id="menu-item-1521" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1521"><a title="topics, abstracts, &amp; recordings" href="http://cromwellhaus.com/presentations/">Talks</a></li>
+</ul></div>				<div class="clear"></div>
+			</nav><!-- #access -->
+		</header><!-- #header -->	<div id="container">
+		<section id="content" class="column onecol">
+							<article class="post-773 post type-post status-publish format-standard hentry category-wpf column onecol" id="post-773">
+					<div class="entry">
+						<header class="entry-header">
+							<h1 class="entry-title">Grouping is crazy easy in WPF</h1>
+									<aside class="entry-meta">
+							<span class="entry-author-link"><a href="http://cromwellhaus.com/author/cromwellryan/" title="Posts by cromwellryan" rel="author">cromwellryan</a></span>
+									<span class="entry-date">March 18, 2010</span>
+												<span class="entry-category"><a href="http://cromwellhaus.com/category/wpf/" title="View all posts in WPF" rel="category tag">WPF</a></span>
+																		<div class="clear"></div>
+		</aside><!-- .entry-meta -->
+							</header><!-- .entry-header -->
+						<div class="entry-content">
+														<p>Lots of people struggle with grouping data and when they do, the brut force method normally takes over and we start creating some crazy super structure to organize data and then do something like put a List inside of a List or a Grid inside of a list.&#160; Just think of how many times you tried to put a <a href="http://www.bing.com/search?q=gridview+inside+repeater&amp;go=&amp;form=QBLH&amp;qs=n">GridView inside of a Repeater</a> back when we didn’t know about jQuery or MVC and WebForms were all we knew.</p>
+<p>Well it turns out WPF (and Silverlight 4.0) make this crazy easy.&#160; It’s why the <a href="http://msdn.microsoft.com/en-us/library/system.windows.data.collectionviewsource.aspx">CollectionViewSource</a> class exists.&#160; The thing people don’t realize is that you don’t have to change anything about your data structure to make this work well (most times) and your designer (you have one right?) can make the decision on how best to display the information.</p>
+<p>&#160;</p>
+<h5>Step 1: Get Yourself Some Data</h5>
+<p>Don’t go crazy trying to group your data in your view model with Linq statements or anything like that.&#160; You don’t (likely) need it.&#160; Just get a list of your Animals with the necessary attributes for display in normal IEnumerable form.</p>
+<p>Here’s how I’m doing to get my data for the sample:</p>
+<pre style="border-bottom: #cecece 1px solid; border-left: #cecece 1px solid; padding-bottom: 5px; background-color: #fbfbfb; min-height: 40px; padding-left: 5px; width: 650px; padding-right: 5px; overflow: auto; border-top: #cecece 1px solid; border-right: #cecece 1px solid; padding-top: 5px"><pre style="background-color: #fbfbfb; margin: 0em; width: 100%; font-family: consolas, &#39;Courier New&#39;, courier, monospace; font-size: 12px"><span style="color: #0000ff">&lt;</span><span style="color: #800000">Page</span> <span style="color: #ff0000">xmlns</span>=<span style="color: #0000ff">&quot;http://schemas.microsoft.com/winfx/2006/xaml/presentation&quot;</span> <span style="color: #ff0000">xmlns</span>:<span style="color: #ff0000">x</span>=<span style="color: #0000ff">&quot;http://schemas.microsoft.com/winfx/2006/xaml&quot;</span><span style="color: #0000ff">&gt;</span>
+</pre>
+<pre style="background-color: #fbfbfb; margin: 0em; width: 100%; font-family: consolas, &#39;Courier New&#39;, courier, monospace; font-size: 12px">    <span style="color: #0000ff">&lt;</span><span style="color: #800000">Page.Resources</span><span style="color: #0000ff">&gt;</span>
+</pre>
+<pre style="background-color: #fbfbfb; margin: 0em; width: 100%; font-family: consolas, &#39;Courier New&#39;, courier, monospace; font-size: 12px">        <span style="color: #0000ff">&lt;</span><span style="color: #800000">XmlDataProvider</span> <span style="color: #ff0000">x</span>:<span style="color: #ff0000">Key</span>=<span style="color: #0000ff">&quot;data&quot;</span><span style="color: #0000ff">&gt;</span>
+</pre>
+<pre style="background-color: #fbfbfb; margin: 0em; width: 100%; font-family: consolas, &#39;Courier New&#39;, courier, monospace; font-size: 12px">            <span style="color: #0000ff">&lt;</span><span style="color: #c71585">x</span>:<span style="color: #800000">XData</span><span style="color: #0000ff">&gt;</span>
+</pre>
+<pre style="background-color: #fbfbfb; margin: 0em; width: 100%; font-family: consolas, &#39;Courier New&#39;, courier, monospace; font-size: 12px">                <span style="color: #0000ff">&lt;</span><span style="color: #800000">Animals</span> <span style="color: #ff0000">xmlns</span>=<span style="color: #0000ff">&quot;&quot;</span><span style="color: #0000ff">&gt;</span>
+</pre>
+<pre style="background-color: #fbfbfb; margin: 0em; width: 100%; font-family: consolas, &#39;Courier New&#39;, courier, monospace; font-size: 12px">                    <span style="color: #0000ff">&lt;</span><span style="color: #800000">Animal</span> <span style="color: #ff0000">name</span>=<span style="color: #0000ff">&quot;Dory&quot;</span> <span style="color: #ff0000">Species</span>=<span style="color: #0000ff">&quot;Fish&quot;</span> <span style="color: #0000ff">/&gt;</span>
+</pre>
+<pre style="background-color: #fbfbfb; margin: 0em; width: 100%; font-family: consolas, &#39;Courier New&#39;, courier, monospace; font-size: 12px">                    <span style="color: #0000ff">&lt;</span><span style="color: #800000">Animal</span> <span style="color: #ff0000">name</span>=<span style="color: #0000ff">&quot;Felix&quot;</span> <span style="color: #ff0000">Species</span>=<span style="color: #0000ff">&quot;Cat&quot;</span> <span style="color: #0000ff">/&gt;</span>
+</pre>
+<pre style="background-color: #fbfbfb; margin: 0em; width: 100%; font-family: consolas, &#39;Courier New&#39;, courier, monospace; font-size: 12px">                    <span style="color: #0000ff">&lt;</span><span style="color: #800000">Animal</span> <span style="color: #ff0000">name</span>=<span style="color: #0000ff">&quot;Fluffy&quot;</span> <span style="color: #ff0000">Species</span>=<span style="color: #0000ff">&quot;Dog&quot;</span> <span style="color: #0000ff">/&gt;</span>
+</pre>
+<pre style="background-color: #fbfbfb; margin: 0em; width: 100%; font-family: consolas, &#39;Courier New&#39;, courier, monospace; font-size: 12px">                    <span style="color: #0000ff">&lt;</span><span style="color: #800000">Animal</span> <span style="color: #ff0000">name</span>=<span style="color: #0000ff">&quot;Jake&quot;</span> <span style="color: #ff0000">Species</span>=<span style="color: #0000ff">&quot;Snake&quot;</span> <span style="color: #0000ff">/&gt;</span>
+</pre>
+<pre style="background-color: #fbfbfb; margin: 0em; width: 100%; font-family: consolas, &#39;Courier New&#39;, courier, monospace; font-size: 12px">                    <span style="color: #0000ff">&lt;</span><span style="color: #800000">Animal</span> <span style="color: #ff0000">name</span>=<span style="color: #0000ff">&quot;Mittens&quot;</span> <span style="color: #ff0000">Species</span>=<span style="color: #0000ff">&quot;Cat&quot;</span> <span style="color: #0000ff">/&gt;</span>
+</pre>
+<pre style="background-color: #fbfbfb; margin: 0em; width: 100%; font-family: consolas, &#39;Courier New&#39;, courier, monospace; font-size: 12px">                    <span style="color: #0000ff">&lt;</span><span style="color: #800000">Animal</span> <span style="color: #ff0000">name</span>=<span style="color: #0000ff">&quot;Murtle&quot;</span> <span style="color: #ff0000">Species</span>=<span style="color: #0000ff">&quot;Turtle&quot;</span> <span style="color: #0000ff">/&gt;</span>
+</pre>
+<pre style="background-color: #fbfbfb; margin: 0em; width: 100%; font-family: consolas, &#39;Courier New&#39;, courier, monospace; font-size: 12px">                    <span style="color: #0000ff">&lt;</span><span style="color: #800000">Animal</span> <span style="color: #ff0000">name</span>=<span style="color: #0000ff">&quot;Nemo&quot;</span> <span style="color: #ff0000">Species</span>=<span style="color: #0000ff">&quot;Fish&quot;</span> <span style="color: #0000ff">/&gt;</span>
+</pre>
+<pre style="background-color: #fbfbfb; margin: 0em; width: 100%; font-family: consolas, &#39;Courier New&#39;, courier, monospace; font-size: 12px">                    <span style="color: #0000ff">&lt;</span><span style="color: #800000">Animal</span> <span style="color: #ff0000">name</span>=<span style="color: #0000ff">&quot;Rex&quot;</span> <span style="color: #ff0000">Species</span>=<span style="color: #0000ff">&quot;Dog&quot;</span> <span style="color: #0000ff">/&gt;</span>
+</pre>
+<pre style="background-color: #fbfbfb; margin: 0em; width: 100%; font-family: consolas, &#39;Courier New&#39;, courier, monospace; font-size: 12px">                    <span style="color: #0000ff">&lt;</span><span style="color: #800000">Animal</span> <span style="color: #ff0000">name</span>=<span style="color: #0000ff">&quot;Rover&quot;</span> <span style="color: #ff0000">Species</span>=<span style="color: #0000ff">&quot;Dog&quot;</span> <span style="color: #0000ff">/&gt;</span>
+</pre>
+<pre style="background-color: #fbfbfb; margin: 0em; width: 100%; font-family: consolas, &#39;Courier New&#39;, courier, monospace; font-size: 12px">                    <span style="color: #0000ff">&lt;</span><span style="color: #800000">Animal</span> <span style="color: #ff0000">name</span>=<span style="color: #0000ff">&quot;Toonces&quot;</span> <span style="color: #ff0000">Species</span>=<span style="color: #0000ff">&quot;Cat&quot;</span> <span style="color: #0000ff">/&gt;</span>
+</pre>
+<pre style="background-color: #fbfbfb; margin: 0em; width: 100%; font-family: consolas, &#39;Courier New&#39;, courier, monospace; font-size: 12px">                <span style="color: #0000ff">&lt;/</span><span style="color: #800000">Animals</span><span style="color: #0000ff">&gt;</span>
+</pre>
+<pre style="background-color: #fbfbfb; margin: 0em; width: 100%; font-family: consolas, &#39;Courier New&#39;, courier, monospace; font-size: 12px">            <span style="color: #0000ff">&lt;/</span><span style="color: #c71585">x</span>:<span style="color: #800000">XData</span><span style="color: #0000ff">&gt;</span>
+</pre>
+<pre style="background-color: #fbfbfb; margin: 0em; width: 100%; font-family: consolas, &#39;Courier New&#39;, courier, monospace; font-size: 12px">        <span style="color: #0000ff">&lt;/</span><span style="color: #800000">XmlDataProvider</span><span style="color: #0000ff">&gt;</span>
+</pre>
+<pre style="background-color: #fbfbfb; margin: 0em; width: 100%; font-family: consolas, &#39;Courier New&#39;, courier, monospace; font-size: 12px">    <span style="color: #0000ff">&lt;/</span><span style="color: #800000">Page.Resources</span><span style="color: #0000ff">&gt;</span>
+</pre>
+<pre style="background-color: #fbfbfb; margin: 0em; width: 100%; font-family: consolas, &#39;Courier New&#39;, courier, monospace; font-size: 12px"><span style="color: #0000ff">&lt;/</span><span style="color: #800000">Page</span><span style="color: #0000ff">&gt;</span></pre>
+<h5>Step 2: Group The Data with CollectionViewSource</h5>
+<p>We need to remember that Xaml is just a way to instantiate classes.&#160; Knowing that, we can create a CollectionViewSource right in our xaml like this:</p>
+<p>&#160;</p>
+<pre style="border-bottom: #cecece 1px solid; border-left: #cecece 1px solid; padding-bottom: 5px; background-color: #fbfbfb; min-height: 40px; padding-left: 5px; width: 650px; padding-right: 5px; overflow: auto; border-top: #cecece 1px solid; border-right: #cecece 1px solid; padding-top: 5px"><pre style="background-color: #fbfbfb; margin: 0em; width: 100%; font-family: consolas, &#39;Courier New&#39;, courier, monospace; font-size: 12px"><span style="color: #0000ff">&lt;</span><span style="color: #800000">Page</span> <span style="color: #ff0000">xmlns</span>=<span style="color: #0000ff">&quot;http://schemas.microsoft.com/winfx/2006/xaml/presentation&quot;</span> <span style="color: #ff0000">xmlns</span>:<span style="color: #ff0000">x</span>=<span style="color: #0000ff">&quot;http://schemas.microsoft.com/winfx/2006/xaml&quot;</span><span style="color: #0000ff">&gt;</span>
+</pre>
+<pre style="background-color: #fbfbfb; margin: 0em; width: 100%; font-family: consolas, &#39;Courier New&#39;, courier, monospace; font-size: 12px">    <span style="color: #0000ff">&lt;</span><span style="color: #800000">Page.Resources</span><span style="color: #0000ff">&gt;</span>
+</pre>
+<pre style="background-color: #fbfbfb; margin: 0em; width: 100%; font-family: consolas, &#39;Courier New&#39;, courier, monospace; font-size: 12px">        <span style="color: #0000ff">&lt;</span><span style="color: #800000">XmlDataProvider</span> <span style="color: #ff0000">x</span>:<span style="color: #ff0000">Key</span>=<span style="color: #0000ff">&quot;data&quot;</span><span style="color: #0000ff">&gt;</span>
+</pre>
+<pre style="background-color: #fbfbfb; margin: 0em; width: 100%; font-family: consolas, &#39;Courier New&#39;, courier, monospace; font-size: 12px">            <span style="color: #0000ff">&lt;</span><span style="color: #c71585">x</span>:<span style="color: #800000">XData</span><span style="color: #0000ff">&gt;</span>
+</pre>
+<pre style="background-color: #fbfbfb; margin: 0em; width: 100%; font-family: consolas, &#39;Courier New&#39;, courier, monospace; font-size: 12px">                <span style="color: #0000ff">&lt;</span><span style="color: #800000">Animals</span> <span style="color: #ff0000">xmlns</span>=<span style="color: #0000ff">&quot;&quot;</span><span style="color: #0000ff">&gt;</span>
+</pre>
+<pre style="background-color: #fbfbfb; margin: 0em; width: 100%; font-family: consolas, &#39;Courier New&#39;, courier, monospace; font-size: 12px">                    <span style="color: #0000ff">&lt;</span><span style="color: #800000">Animal</span> <span style="color: #ff0000">name</span>=<span style="color: #0000ff">&quot;Dory&quot;</span> <span style="color: #ff0000">Species</span>=<span style="color: #0000ff">&quot;Fish&quot;</span> <span style="color: #0000ff">/&gt;</span>
+</pre>
+<pre style="background-color: #fbfbfb; margin: 0em; width: 100%; font-family: consolas, &#39;Courier New&#39;, courier, monospace; font-size: 12px">                    <span style="color: #0000ff">&lt;</span><span style="color: #800000">Animal</span> <span style="color: #ff0000">name</span>=<span style="color: #0000ff">&quot;Felix&quot;</span> <span style="color: #ff0000">Species</span>=<span style="color: #0000ff">&quot;Cat&quot;</span> <span style="color: #0000ff">/&gt;</span>
+</pre>
+<pre style="background-color: #fbfbfb; margin: 0em; width: 100%; font-family: consolas, &#39;Courier New&#39;, courier, monospace; font-size: 12px">                    <span style="color: #0000ff">&lt;</span><span style="color: #800000">Animal</span> <span style="color: #ff0000">name</span>=<span style="color: #0000ff">&quot;Fluffy&quot;</span> <span style="color: #ff0000">Species</span>=<span style="color: #0000ff">&quot;Dog&quot;</span> <span style="color: #0000ff">/&gt;</span>
+</pre>
+<pre style="background-color: #fbfbfb; margin: 0em; width: 100%; font-family: consolas, &#39;Courier New&#39;, courier, monospace; font-size: 12px">                    <span style="color: #0000ff">&lt;</span><span style="color: #800000">Animal</span> <span style="color: #ff0000">name</span>=<span style="color: #0000ff">&quot;Jake&quot;</span> <span style="color: #ff0000">Species</span>=<span style="color: #0000ff">&quot;Snake&quot;</span> <span style="color: #0000ff">/&gt;</span>
+</pre>
+<pre style="background-color: #fbfbfb; margin: 0em; width: 100%; font-family: consolas, &#39;Courier New&#39;, courier, monospace; font-size: 12px">                    <span style="color: #0000ff">&lt;</span><span style="color: #800000">Animal</span> <span style="color: #ff0000">name</span>=<span style="color: #0000ff">&quot;Mittens&quot;</span> <span style="color: #ff0000">Species</span>=<span style="color: #0000ff">&quot;Cat&quot;</span> <span style="color: #0000ff">/&gt;</span>
+</pre>
+<pre style="background-color: #fbfbfb; margin: 0em; width: 100%; font-family: consolas, &#39;Courier New&#39;, courier, monospace; font-size: 12px">                    <span style="color: #0000ff">&lt;</span><span style="color: #800000">Animal</span> <span style="color: #ff0000">name</span>=<span style="color: #0000ff">&quot;Murtle&quot;</span> <span style="color: #ff0000">Species</span>=<span style="color: #0000ff">&quot;Turtle&quot;</span> <span style="color: #0000ff">/&gt;</span>
+</pre>
+<pre style="background-color: #fbfbfb; margin: 0em; width: 100%; font-family: consolas, &#39;Courier New&#39;, courier, monospace; font-size: 12px">                    <span style="color: #0000ff">&lt;</span><span style="color: #800000">Animal</span> <span style="color: #ff0000">name</span>=<span style="color: #0000ff">&quot;Nemo&quot;</span> <span style="color: #ff0000">Species</span>=<span style="color: #0000ff">&quot;Fish&quot;</span> <span style="color: #0000ff">/&gt;</span>
+</pre>
+<pre style="background-color: #fbfbfb; margin: 0em; width: 100%; font-family: consolas, &#39;Courier New&#39;, courier, monospace; font-size: 12px">                    <span style="color: #0000ff">&lt;</span><span style="color: #800000">Animal</span> <span style="color: #ff0000">name</span>=<span style="color: #0000ff">&quot;Rex&quot;</span> <span style="color: #ff0000">Species</span>=<span style="color: #0000ff">&quot;Dog&quot;</span> <span style="color: #0000ff">/&gt;</span>
+</pre>
+<pre style="background-color: #fbfbfb; margin: 0em; width: 100%; font-family: consolas, &#39;Courier New&#39;, courier, monospace; font-size: 12px">                    <span style="color: #0000ff">&lt;</span><span style="color: #800000">Animal</span> <span style="color: #ff0000">name</span>=<span style="color: #0000ff">&quot;Rover&quot;</span> <span style="color: #ff0000">Species</span>=<span style="color: #0000ff">&quot;Dog&quot;</span> <span style="color: #0000ff">/&gt;</span>
+</pre>
+<pre style="background-color: #fbfbfb; margin: 0em; width: 100%; font-family: consolas, &#39;Courier New&#39;, courier, monospace; font-size: 12px">                    <span style="color: #0000ff">&lt;</span><span style="color: #800000">Animal</span> <span style="color: #ff0000">name</span>=<span style="color: #0000ff">&quot;Toonces&quot;</span> <span style="color: #ff0000">Species</span>=<span style="color: #0000ff">&quot;Cat&quot;</span> <span style="color: #0000ff">/&gt;</span>
+</pre>
+<pre style="background-color: #fbfbfb; margin: 0em; width: 100%; font-family: consolas, &#39;Courier New&#39;, courier, monospace; font-size: 12px">                <span style="color: #0000ff">&lt;/</span><span style="color: #800000">Animals</span><span style="color: #0000ff">&gt;</span>
+</pre>
+<pre style="background-color: #fbfbfb; margin: 0em; width: 100%; font-family: consolas, &#39;Courier New&#39;, courier, monospace; font-size: 12px">            <span style="color: #0000ff">&lt;/</span><span style="color: #c71585">x</span>:<span style="color: #800000">XData</span><span style="color: #0000ff">&gt;</span>
+</pre>
+<pre style="background-color: #fbfbfb; margin: 0em; width: 100%; font-family: consolas, &#39;Courier New&#39;, courier, monospace; font-size: 12px">        <span style="color: #0000ff">&lt;/</span><span style="color: #800000">XmlDataProvider</span><span style="color: #0000ff">&gt;</span>
+</pre>
+<pre style="background-color: #ffff00; margin: 0em; width: 100%; font-family: consolas, &#39;Courier New&#39;, courier, monospace; font-size: 12px">        <span style="color: #0000ff">&lt;</span><span style="color: #800000">CollectionViewSource</span> <span style="color: #ff0000">x</span>:<span style="color: #ff0000">Key</span>=<span style="color: #0000ff">&quot;animalsBySpecies&quot;</span> <span style="color: #ff0000">Source</span>=<span style="color: #0000ff">&quot;{Binding Source={StaticResource data}, XPath=Animals/Animal}&quot;</span><span style="color: #0000ff">&gt;</span>
+</pre>
+<pre style="background-color: #ffff00; margin: 0em; width: 100%; font-family: consolas, &#39;Courier New&#39;, courier, monospace; font-size: 12px">            <span style="color: #0000ff">&lt;</span><span style="color: #800000">CollectionViewSource.GroupDescriptions</span><span style="color: #0000ff">&gt;</span>
+</pre>
+<pre style="background-color: #ffff00; margin: 0em; width: 100%; font-family: consolas, &#39;Courier New&#39;, courier, monospace; font-size: 12px">                <span style="color: #0000ff">&lt;</span><span style="color: #800000">PropertyGroupDescription</span> <span style="color: #ff0000">PropertyName</span>=<span style="color: #0000ff">&quot;@Species&quot;</span> <span style="color: #0000ff">/&gt;</span>
+</pre>
+<pre style="background-color: #ffff00; margin: 0em; width: 100%; font-family: consolas, &#39;Courier New&#39;, courier, monospace; font-size: 12px">            <span style="color: #0000ff">&lt;/</span><span style="color: #800000">CollectionViewSource.GroupDescriptions</span><span style="color: #0000ff">&gt;</span>
+</pre>
+<pre style="background-color: #ffff00; margin: 0em; width: 100%; font-family: consolas, &#39;Courier New&#39;, courier, monospace; font-size: 12px">        <span style="color: #0000ff">&lt;/</span><span style="color: #800000">CollectionViewSource</span><span style="color: #0000ff">&gt;</span>
+</pre>
+<pre style="background-color: #fbfbfb; margin: 0em; width: 100%; font-family: consolas, &#39;Courier New&#39;, courier, monospace; font-size: 12px">    <span style="color: #0000ff">&lt;/</span><span style="color: #800000">Page.Resources</span><span style="color: #0000ff">&gt;</span>
+</pre>
+<pre style="background-color: #fbfbfb; margin: 0em; width: 100%; font-family: consolas, &#39;Courier New&#39;, courier, monospace; font-size: 12px"><span style="color: #0000ff">&lt;/</span><span style="color: #800000">Page</span><span style="color: #0000ff">&gt;</span></pre>
+<p>&#160;</p>
+<h5>Step 3: Show The Data</h5>
+<p>This is where the fun happens.&#160; We take something as simple as a ListView or, simplier yet, the ItemsControl and we hook it up to our CollectionViewSource like this:</p>
+<pre style="border-bottom: #cecece 1px solid; border-left: #cecece 1px solid; padding-bottom: 5px; background-color: #fbfbfb; min-height: 40px; padding-left: 5px; width: 650px; padding-right: 5px; overflow: auto; border-top: #cecece 1px solid; border-right: #cecece 1px solid; padding-top: 5px"><pre style="background-color: #fbfbfb; margin: 0em; width: 100%; font-family: consolas, &#39;Courier New&#39;, courier, monospace; font-size: 12px"><span style="color: #0000ff">&lt;</span><span style="color: #800000">Page</span> <span style="color: #ff0000">xmlns</span>=<span style="color: #0000ff">&quot;http://schemas.microsoft.com/winfx/2006/xaml/presentation&quot;</span> <span style="color: #ff0000">xmlns</span>:<span style="color: #ff0000">x</span>=<span style="color: #0000ff">&quot;http://schemas.microsoft.com/winfx/2006/xaml&quot;</span><span style="color: #0000ff">&gt;</span>
+</pre>
+<pre style="background-color: #fbfbfb; margin: 0em; width: 100%; font-family: consolas, &#39;Courier New&#39;, courier, monospace; font-size: 12px">    <span style="color: #0000ff">&lt;</span><span style="color: #800000">Page.Resources</span><span style="color: #0000ff">&gt;</span>
+</pre>
+<pre style="background-color: #fbfbfb; margin: 0em; width: 100%; font-family: consolas, &#39;Courier New&#39;, courier, monospace; font-size: 12px">        <span style="color: #0000ff">&lt;</span><span style="color: #800000">XmlDataProvider</span> <span style="color: #ff0000">x</span>:<span style="color: #ff0000">Key</span>=<span style="color: #0000ff">&quot;data&quot;</span><span style="color: #0000ff">&gt;</span>
+</pre>
+<pre style="background-color: #fbfbfb; margin: 0em; width: 100%; font-family: consolas, &#39;Courier New&#39;, courier, monospace; font-size: 12px">            <span style="color: #0000ff">&lt;</span><span style="color: #c71585">x</span>:<span style="color: #800000">XData</span><span style="color: #0000ff">&gt;</span>
+</pre>
+<pre style="background-color: #fbfbfb; margin: 0em; width: 100%; font-family: consolas, &#39;Courier New&#39;, courier, monospace; font-size: 12px">                <span style="color: #0000ff">&lt;</span><span style="color: #800000">Animals</span> <span style="color: #ff0000">xmlns</span>=<span style="color: #0000ff">&quot;&quot;</span><span style="color: #0000ff">&gt;</span>
+</pre>
+<pre style="background-color: #fbfbfb; margin: 0em; width: 100%; font-family: consolas, &#39;Courier New&#39;, courier, monospace; font-size: 12px">                    <span style="color: #0000ff">&lt;</span><span style="color: #800000">Animal</span> <span style="color: #ff0000">name</span>=<span style="color: #0000ff">&quot;Dory&quot;</span> <span style="color: #ff0000">Species</span>=<span style="color: #0000ff">&quot;Fish&quot;</span> <span style="color: #0000ff">/&gt;</span>
+</pre>
+<pre style="background-color: #fbfbfb; margin: 0em; width: 100%; font-family: consolas, &#39;Courier New&#39;, courier, monospace; font-size: 12px">                    <span style="color: #0000ff">&lt;</span><span style="color: #800000">Animal</span> <span style="color: #ff0000">name</span>=<span style="color: #0000ff">&quot;Felix&quot;</span> <span style="color: #ff0000">Species</span>=<span style="color: #0000ff">&quot;Cat&quot;</span> <span style="color: #0000ff">/&gt;</span>
+</pre>
+<pre style="background-color: #fbfbfb; margin: 0em; width: 100%; font-family: consolas, &#39;Courier New&#39;, courier, monospace; font-size: 12px">                    <span style="color: #0000ff">&lt;</span><span style="color: #800000">Animal</span> <span style="color: #ff0000">name</span>=<span style="color: #0000ff">&quot;Fluffy&quot;</span> <span style="color: #ff0000">Species</span>=<span style="color: #0000ff">&quot;Dog&quot;</span> <span style="color: #0000ff">/&gt;</span>
+</pre>
+<pre style="background-color: #fbfbfb; margin: 0em; width: 100%; font-family: consolas, &#39;Courier New&#39;, courier, monospace; font-size: 12px">                    <span style="color: #0000ff">&lt;</span><span style="color: #800000">Animal</span> <span style="color: #ff0000">name</span>=<span style="color: #0000ff">&quot;Jake&quot;</span> <span style="color: #ff0000">Species</span>=<span style="color: #0000ff">&quot;Snake&quot;</span> <span style="color: #0000ff">/&gt;</span>
+</pre>
+<pre style="background-color: #fbfbfb; margin: 0em; width: 100%; font-family: consolas, &#39;Courier New&#39;, courier, monospace; font-size: 12px">                    <span style="color: #0000ff">&lt;</span><span style="color: #800000">Animal</span> <span style="color: #ff0000">name</span>=<span style="color: #0000ff">&quot;Mittens&quot;</span> <span style="color: #ff0000">Species</span>=<span style="color: #0000ff">&quot;Cat&quot;</span> <span style="color: #0000ff">/&gt;</span>
+</pre>
+<pre style="background-color: #fbfbfb; margin: 0em; width: 100%; font-family: consolas, &#39;Courier New&#39;, courier, monospace; font-size: 12px">                    <span style="color: #0000ff">&lt;</span><span style="color: #800000">Animal</span> <span style="color: #ff0000">name</span>=<span style="color: #0000ff">&quot;Murtle&quot;</span> <span style="color: #ff0000">Species</span>=<span style="color: #0000ff">&quot;Turtle&quot;</span> <span style="color: #0000ff">/&gt;</span>
+</pre>
+<pre style="background-color: #fbfbfb; margin: 0em; width: 100%; font-family: consolas, &#39;Courier New&#39;, courier, monospace; font-size: 12px">                    <span style="color: #0000ff">&lt;</span><span style="color: #800000">Animal</span> <span style="color: #ff0000">name</span>=<span style="color: #0000ff">&quot;Nemo&quot;</span> <span style="color: #ff0000">Species</span>=<span style="color: #0000ff">&quot;Fish&quot;</span> <span style="color: #0000ff">/&gt;</span>
+</pre>
+<pre style="background-color: #fbfbfb; margin: 0em; width: 100%; font-family: consolas, &#39;Courier New&#39;, courier, monospace; font-size: 12px">                    <span style="color: #0000ff">&lt;</span><span style="color: #800000">Animal</span> <span style="color: #ff0000">name</span>=<span style="color: #0000ff">&quot;Rex&quot;</span> <span style="color: #ff0000">Species</span>=<span style="color: #0000ff">&quot;Dog&quot;</span> <span style="color: #0000ff">/&gt;</span>
+</pre>
+<pre style="background-color: #fbfbfb; margin: 0em; width: 100%; font-family: consolas, &#39;Courier New&#39;, courier, monospace; font-size: 12px">                    <span style="color: #0000ff">&lt;</span><span style="color: #800000">Animal</span> <span style="color: #ff0000">name</span>=<span style="color: #0000ff">&quot;Rover&quot;</span> <span style="color: #ff0000">Species</span>=<span style="color: #0000ff">&quot;Dog&quot;</span> <span style="color: #0000ff">/&gt;</span>
+</pre>
+<pre style="background-color: #fbfbfb; margin: 0em; width: 100%; font-family: consolas, &#39;Courier New&#39;, courier, monospace; font-size: 12px">                    <span style="color: #0000ff">&lt;</span><span style="color: #800000">Animal</span> <span style="color: #ff0000">name</span>=<span style="color: #0000ff">&quot;Toonces&quot;</span> <span style="color: #ff0000">Species</span>=<span style="color: #0000ff">&quot;Cat&quot;</span> <span style="color: #0000ff">/&gt;</span>
+</pre>
+<pre style="background-color: #fbfbfb; margin: 0em; width: 100%; font-family: consolas, &#39;Courier New&#39;, courier, monospace; font-size: 12px">                <span style="color: #0000ff">&lt;/</span><span style="color: #800000">Animals</span><span style="color: #0000ff">&gt;</span>
+</pre>
+<pre style="background-color: #fbfbfb; margin: 0em; width: 100%; font-family: consolas, &#39;Courier New&#39;, courier, monospace; font-size: 12px">            <span style="color: #0000ff">&lt;/</span><span style="color: #c71585">x</span>:<span style="color: #800000">XData</span><span style="color: #0000ff">&gt;</span>
+</pre>
+<pre style="background-color: #fbfbfb; margin: 0em; width: 100%; font-family: consolas, &#39;Courier New&#39;, courier, monospace; font-size: 12px">        <span style="color: #0000ff">&lt;/</span><span style="color: #800000">XmlDataProvider</span><span style="color: #0000ff">&gt;</span>
+</pre>
+<pre style="background-color: #fbfbfb; margin: 0em; width: 100%; font-family: consolas, &#39;Courier New&#39;, courier, monospace; font-size: 12px">        <span style="color: #0000ff">&lt;</span><span style="color: #800000">CollectionViewSource</span> <span style="color: #ff0000">x</span>:<span style="color: #ff0000">Key</span>=<span style="color: #0000ff">&quot;animalsBySpecies&quot;</span> <span style="color: #ff0000">Source</span>=<span style="color: #0000ff">&quot;{Binding Source={StaticResource data}, XPath=Animals/Animal}&quot;</span><span style="color: #0000ff">&gt;</span>
+</pre>
+<pre style="background-color: #fbfbfb; margin: 0em; width: 100%; font-family: consolas, &#39;Courier New&#39;, courier, monospace; font-size: 12px">            <span style="color: #0000ff">&lt;</span><span style="color: #800000">CollectionViewSource.GroupDescriptions</span><span style="color: #0000ff">&gt;</span>
+</pre>
+<pre style="background-color: #fbfbfb; margin: 0em; width: 100%; font-family: consolas, &#39;Courier New&#39;, courier, monospace; font-size: 12px">                <span style="color: #0000ff">&lt;</span><span style="color: #800000">PropertyGroupDescription</span> <span style="color: #ff0000">PropertyName</span>=<span style="color: #0000ff">&quot;@Species&quot;</span> <span style="color: #0000ff">/&gt;</span>
+</pre>
+<pre style="background-color: #fbfbfb; margin: 0em; width: 100%; font-family: consolas, &#39;Courier New&#39;, courier, monospace; font-size: 12px">            <span style="color: #0000ff">&lt;/</span><span style="color: #800000">CollectionViewSource.GroupDescriptions</span><span style="color: #0000ff">&gt;</span>
+</pre>
+<pre style="background-color: #fbfbfb; margin: 0em; width: 100%; font-family: consolas, &#39;Courier New&#39;, courier, monospace; font-size: 12px">        <span style="color: #0000ff">&lt;/</span><span style="color: #800000">CollectionViewSource</span><span style="color: #0000ff">&gt;</span>
+</pre>
+<pre style="background-color: #fbfbfb; margin: 0em; width: 100%; font-family: consolas, &#39;Courier New&#39;, courier, monospace; font-size: 12px">    <span style="color: #0000ff">&lt;/</span><span style="color: #800000">Page.Resources</span><span style="color: #0000ff">&gt;</span>
+</pre>
+<pre style="background-color: #fbfbfb; margin: 0em; width: 100%; font-family: consolas, &#39;Courier New&#39;, courier, monospace; font-size: 12px">    <span style="color: #0000ff">&lt;</span><span style="color: #800000">DockPanel</span><span style="color: #0000ff">&gt;</span>
+</pre>
+<pre style="background-color: #fbfbfb; margin: 0em; width: 100%; font-family: consolas, &#39;Courier New&#39;, courier, monospace; font-size: 12px">        <span style="color: #0000ff">&lt;</span><span style="color: #800000">ScrollViewer</span> <span style="color: #ff0000">DockPanel</span>.<span style="color: #ff0000">Dock</span>=<span style="color: #0000ff">&quot;Bottom&quot;</span> <span style="color: #ff0000">VerticalScrollBarVisibility</span>=<span style="color: #0000ff">&quot;Auto&quot;</span><span style="color: #0000ff">&gt;</span>
+</pre>
+<pre style="background-color: #ffff00; margin: 0em; width: 100%; font-family: consolas, &#39;Courier New&#39;, courier, monospace; font-size: 12px">            <span style="color: #0000ff">&lt;</span><span style="color: #800000">ItemsControl</span> <span style="color: #ff0000">ItemsSource</span>=<span style="color: #0000ff">&quot;{Binding Source={StaticResource animalsBySpecies}}&quot;</span><span style="color: #0000ff">&gt;</span>
+</pre>
+<pre style="background-color: #ffff00; margin: 0em; width: 100%; font-family: consolas, &#39;Courier New&#39;, courier, monospace; font-size: 12px">                <span style="color: #0000ff">&lt;</span><span style="color: #800000">ItemsControl.ItemTemplate</span><span style="color: #0000ff">&gt;</span>
+</pre>
+<pre style="background-color: #ffff00; margin: 0em; width: 100%; font-family: consolas, &#39;Courier New&#39;, courier, monospace; font-size: 12px">                    <span style="color: #0000ff">&lt;</span><span style="color: #800000">DataTemplate</span><span style="color: #0000ff">&gt;</span>
+</pre>
+<pre style="background-color: #ffff00; margin: 0em; width: 100%; font-family: consolas, &#39;Courier New&#39;, courier, monospace; font-size: 12px">                        <span style="color: #0000ff">&lt;</span><span style="color: #800000">TextBlock</span> <span style="color: #ff0000">Text</span>=<span style="color: #0000ff">&quot;{Binding XPath=@name}&quot;</span> <span style="color: #0000ff">/&gt;</span>
+</pre>
+<pre style="background-color: #ffff00; margin: 0em; width: 100%; font-family: consolas, &#39;Courier New&#39;, courier, monospace; font-size: 12px">                    <span style="color: #0000ff">&lt;/</span><span style="color: #800000">DataTemplate</span><span style="color: #0000ff">&gt;</span>
+</pre>
+<pre style="background-color: #ffff00; margin: 0em; width: 100%; font-family: consolas, &#39;Courier New&#39;, courier, monospace; font-size: 12px">                <span style="color: #0000ff">&lt;/</span><span style="color: #800000">ItemsControl.ItemTemplate</span><span style="color: #0000ff">&gt;</span>
+</pre>
+<pre style="background-color: #ffff00; margin: 0em; width: 100%; font-family: consolas, &#39;Courier New&#39;, courier, monospace; font-size: 12px">            <span style="color: #0000ff">&lt;/</span><span style="color: #800000">ItemsControl</span><span style="color: #0000ff">&gt;</span>
+</pre>
+<pre style="background-color: #fbfbfb; margin: 0em; width: 100%; font-family: consolas, &#39;Courier New&#39;, courier, monospace; font-size: 12px">        <span style="color: #0000ff">&lt;/</span><span style="color: #800000">ScrollViewer</span><span style="color: #0000ff">&gt;</span>
+</pre>
+<pre style="background-color: #fbfbfb; margin: 0em; width: 100%; font-family: consolas, &#39;Courier New&#39;, courier, monospace; font-size: 12px">    <span style="color: #0000ff">&lt;/</span><span style="color: #800000">DockPanel</span><span style="color: #0000ff">&gt;</span>
+</pre>
+<pre style="background-color: #fbfbfb; margin: 0em; width: 100%; font-family: consolas, &#39;Courier New&#39;, courier, monospace; font-size: 12px"><span style="color: #0000ff">&lt;/</span><span style="color: #800000">Page</span><span style="color: #0000ff">&gt;</span>
+</pre>
+<pre style="background-color: #fbfbfb; margin: 0em; width: 100%; font-family: consolas, &#39;Courier New&#39;, courier, monospace; font-size: 12px"></pre>
+<pre style="background-color: #fbfbfb; margin: 0em; width: 100%; font-family: consolas, &#39;Courier New&#39;, courier, monospace; font-size: 12px"></pre>
+<p>This doesn’t give us anything we couldn’t do before:</p>
+<p><a href="http://cromwellhaus.com/wp-content/uploads/2012/06/SNAGHTML5b58fce.png"><img style="background-image: none; border-right-width: 0px; margin: 4px 10px; padding-left: 0px; padding-right: 0px; display: inline; border-top-width: 0px; border-bottom-width: 0px; border-left-width: 0px; padding-top: 0px" title="SNAGHTML5b58fce" border="0" alt="SNAGHTML5b58fce" src="http://cromwellhaus.com/wp-content/uploads/2012/06/SNAGHTML5b58fce_thumb.png" width="644" height="354" /></a></p>
+<p>&#160;</p>
+<p>So how do we represent this grouping? </p>
+<h5>Step 3: Display the Grouping</h5>
+<p>Easy, we define the GroupStyle.&#160; There is an awful lot we can do here, but we’ll go with putting each into a GroupBox with the Header being the Species.</p>
+<pre style="border-bottom: #cecece 1px solid; border-left: #cecece 1px solid; padding-bottom: 5px; background-color: #fbfbfb; min-height: 40px; padding-left: 5px; width: 650px; padding-right: 5px; overflow: auto; border-top: #cecece 1px solid; border-right: #cecece 1px solid; padding-top: 5px"><pre style="background-color: #fbfbfb; margin: 0em; width: 100%; font-family: consolas, &#39;Courier New&#39;, courier, monospace; font-size: 12px"><span style="color: #0000ff">&lt;</span><span style="color: #800000">Page</span> <span style="color: #ff0000">xmlns</span>=<span style="color: #0000ff">&quot;http://schemas.microsoft.com/winfx/2006/xaml/presentation&quot;</span> <span style="color: #ff0000">xmlns</span>:<span style="color: #ff0000">x</span>=<span style="color: #0000ff">&quot;http://schemas.microsoft.com/winfx/2006/xaml&quot;</span><span style="color: #0000ff">&gt;</span>
+</pre>
+<pre style="background-color: #fbfbfb; margin: 0em; width: 100%; font-family: consolas, &#39;Courier New&#39;, courier, monospace; font-size: 12px">    <span style="color: #0000ff">&lt;</span><span style="color: #800000">Page.Resources</span><span style="color: #0000ff">&gt;</span>
+</pre>
+<pre style="background-color: #fbfbfb; margin: 0em; width: 100%; font-family: consolas, &#39;Courier New&#39;, courier, monospace; font-size: 12px">        <span style="color: #0000ff">&lt;</span><span style="color: #800000">XmlDataProvider</span> <span style="color: #ff0000">x</span>:<span style="color: #ff0000">Key</span>=<span style="color: #0000ff">&quot;data&quot;</span><span style="color: #0000ff">&gt;</span>
+</pre>
+<pre style="background-color: #fbfbfb; margin: 0em; width: 100%; font-family: consolas, &#39;Courier New&#39;, courier, monospace; font-size: 12px">            <span style="color: #0000ff">&lt;</span><span style="color: #c71585">x</span>:<span style="color: #800000">XData</span><span style="color: #0000ff">&gt;</span>
+</pre>
+<pre style="background-color: #fbfbfb; margin: 0em; width: 100%; font-family: consolas, &#39;Courier New&#39;, courier, monospace; font-size: 12px">                <span style="color: #0000ff">&lt;</span><span style="color: #800000">Animals</span> <span style="color: #ff0000">xmlns</span>=<span style="color: #0000ff">&quot;&quot;</span><span style="color: #0000ff">&gt;</span>
+</pre>
+<pre style="background-color: #fbfbfb; margin: 0em; width: 100%; font-family: consolas, &#39;Courier New&#39;, courier, monospace; font-size: 12px">                    <span style="color: #0000ff">&lt;</span><span style="color: #800000">Animal</span> <span style="color: #ff0000">name</span>=<span style="color: #0000ff">&quot;Dory&quot;</span> <span style="color: #ff0000">Species</span>=<span style="color: #0000ff">&quot;Fish&quot;</span> <span style="color: #0000ff">/&gt;</span>
+</pre>
+<pre style="background-color: #fbfbfb; margin: 0em; width: 100%; font-family: consolas, &#39;Courier New&#39;, courier, monospace; font-size: 12px">                    <span style="color: #0000ff">&lt;</span><span style="color: #800000">Animal</span> <span style="color: #ff0000">name</span>=<span style="color: #0000ff">&quot;Felix&quot;</span> <span style="color: #ff0000">Species</span>=<span style="color: #0000ff">&quot;Cat&quot;</span> <span style="color: #0000ff">/&gt;</span>
+</pre>
+<pre style="background-color: #fbfbfb; margin: 0em; width: 100%; font-family: consolas, &#39;Courier New&#39;, courier, monospace; font-size: 12px">                    <span style="color: #0000ff">&lt;</span><span style="color: #800000">Animal</span> <span style="color: #ff0000">name</span>=<span style="color: #0000ff">&quot;Fluffy&quot;</span> <span style="color: #ff0000">Species</span>=<span style="color: #0000ff">&quot;Dog&quot;</span> <span style="color: #0000ff">/&gt;</span>
+</pre>
+<pre style="background-color: #fbfbfb; margin: 0em; width: 100%; font-family: consolas, &#39;Courier New&#39;, courier, monospace; font-size: 12px">                    <span style="color: #0000ff">&lt;</span><span style="color: #800000">Animal</span> <span style="color: #ff0000">name</span>=<span style="color: #0000ff">&quot;Jake&quot;</span> <span style="color: #ff0000">Species</span>=<span style="color: #0000ff">&quot;Snake&quot;</span> <span style="color: #0000ff">/&gt;</span>
+</pre>
+<pre style="background-color: #fbfbfb; margin: 0em; width: 100%; font-family: consolas, &#39;Courier New&#39;, courier, monospace; font-size: 12px">                    <span style="color: #0000ff">&lt;</span><span style="color: #800000">Animal</span> <span style="color: #ff0000">name</span>=<span style="color: #0000ff">&quot;Mittens&quot;</span> <span style="color: #ff0000">Species</span>=<span style="color: #0000ff">&quot;Cat&quot;</span> <span style="color: #0000ff">/&gt;</span>
+</pre>
+<pre style="background-color: #fbfbfb; margin: 0em; width: 100%; font-family: consolas, &#39;Courier New&#39;, courier, monospace; font-size: 12px">                    <span style="color: #0000ff">&lt;</span><span style="color: #800000">Animal</span> <span style="color: #ff0000">name</span>=<span style="color: #0000ff">&quot;Murtle&quot;</span> <span style="color: #ff0000">Species</span>=<span style="color: #0000ff">&quot;Turtle&quot;</span> <span style="color: #0000ff">/&gt;</span>
+</pre>
+<pre style="background-color: #fbfbfb; margin: 0em; width: 100%; font-family: consolas, &#39;Courier New&#39;, courier, monospace; font-size: 12px">                    <span style="color: #0000ff">&lt;</span><span style="color: #800000">Animal</span> <span style="color: #ff0000">name</span>=<span style="color: #0000ff">&quot;Nemo&quot;</span> <span style="color: #ff0000">Species</span>=<span style="color: #0000ff">&quot;Fish&quot;</span> <span style="color: #0000ff">/&gt;</span>
+</pre>
+<pre style="background-color: #fbfbfb; margin: 0em; width: 100%; font-family: consolas, &#39;Courier New&#39;, courier, monospace; font-size: 12px">                    <span style="color: #0000ff">&lt;</span><span style="color: #800000">Animal</span> <span style="color: #ff0000">name</span>=<span style="color: #0000ff">&quot;Rex&quot;</span> <span style="color: #ff0000">Species</span>=<span style="color: #0000ff">&quot;Dog&quot;</span> <span style="color: #0000ff">/&gt;</span>
+</pre>
+<pre style="background-color: #fbfbfb; margin: 0em; width: 100%; font-family: consolas, &#39;Courier New&#39;, courier, monospace; font-size: 12px">                    <span style="color: #0000ff">&lt;</span><span style="color: #800000">Animal</span> <span style="color: #ff0000">name</span>=<span style="color: #0000ff">&quot;Rover&quot;</span> <span style="color: #ff0000">Species</span>=<span style="color: #0000ff">&quot;Dog&quot;</span> <span style="color: #0000ff">/&gt;</span>
+</pre>
+<pre style="background-color: #fbfbfb; margin: 0em; width: 100%; font-family: consolas, &#39;Courier New&#39;, courier, monospace; font-size: 12px">                    <span style="color: #0000ff">&lt;</span><span style="color: #800000">Animal</span> <span style="color: #ff0000">name</span>=<span style="color: #0000ff">&quot;Toonces&quot;</span> <span style="color: #ff0000">Species</span>=<span style="color: #0000ff">&quot;Cat&quot;</span> <span style="color: #0000ff">/&gt;</span>
+</pre>
+<pre style="background-color: #fbfbfb; margin: 0em; width: 100%; font-family: consolas, &#39;Courier New&#39;, courier, monospace; font-size: 12px">                <span style="color: #0000ff">&lt;/</span><span style="color: #800000">Animals</span><span style="color: #0000ff">&gt;</span>
+</pre>
+<pre style="background-color: #fbfbfb; margin: 0em; width: 100%; font-family: consolas, &#39;Courier New&#39;, courier, monospace; font-size: 12px">            <span style="color: #0000ff">&lt;/</span><span style="color: #c71585">x</span>:<span style="color: #800000">XData</span><span style="color: #0000ff">&gt;</span>
+</pre>
+<pre style="background-color: #fbfbfb; margin: 0em; width: 100%; font-family: consolas, &#39;Courier New&#39;, courier, monospace; font-size: 12px">        <span style="color: #0000ff">&lt;/</span><span style="color: #800000">XmlDataProvider</span><span style="color: #0000ff">&gt;</span>
+</pre>
+<pre style="background-color: #fbfbfb; margin: 0em; width: 100%; font-family: consolas, &#39;Courier New&#39;, courier, monospace; font-size: 12px">        <span style="color: #0000ff">&lt;</span><span style="color: #800000">CollectionViewSource</span> <span style="color: #ff0000">x</span>:<span style="color: #ff0000">Key</span>=<span style="color: #0000ff">&quot;animalsBySpecies&quot;</span> <span style="color: #ff0000">Source</span>=<span style="color: #0000ff">&quot;{Binding Source={StaticResource data}, XPath=Animals/Animal}&quot;</span><span style="color: #0000ff">&gt;</span>
+</pre>
+<pre style="background-color: #fbfbfb; margin: 0em; width: 100%; font-family: consolas, &#39;Courier New&#39;, courier, monospace; font-size: 12px">            <span style="color: #0000ff">&lt;</span><span style="color: #800000">CollectionViewSource.GroupDescriptions</span><span style="color: #0000ff">&gt;</span>
+</pre>
+<pre style="background-color: #fbfbfb; margin: 0em; width: 100%; font-family: consolas, &#39;Courier New&#39;, courier, monospace; font-size: 12px">                <span style="color: #0000ff">&lt;</span><span style="color: #800000">PropertyGroupDescription</span> <span style="color: #ff0000">PropertyName</span>=<span style="color: #0000ff">&quot;@Species&quot;</span> <span style="color: #0000ff">/&gt;</span>
+</pre>
+<pre style="background-color: #fbfbfb; margin: 0em; width: 100%; font-family: consolas, &#39;Courier New&#39;, courier, monospace; font-size: 12px">            <span style="color: #0000ff">&lt;/</span><span style="color: #800000">CollectionViewSource.GroupDescriptions</span><span style="color: #0000ff">&gt;</span>
+</pre>
+<pre style="background-color: #fbfbfb; margin: 0em; width: 100%; font-family: consolas, &#39;Courier New&#39;, courier, monospace; font-size: 12px">        <span style="color: #0000ff">&lt;/</span><span style="color: #800000">CollectionViewSource</span><span style="color: #0000ff">&gt;</span>
+</pre>
+<pre style="background-color: #fbfbfb; margin: 0em; width: 100%; font-family: consolas, &#39;Courier New&#39;, courier, monospace; font-size: 12px">    <span style="color: #0000ff">&lt;/</span><span style="color: #800000">Page.Resources</span><span style="color: #0000ff">&gt;</span>
+</pre>
+<pre style="background-color: #fbfbfb; margin: 0em; width: 100%; font-family: consolas, &#39;Courier New&#39;, courier, monospace; font-size: 12px">    <span style="color: #0000ff">&lt;</span><span style="color: #800000">DockPanel</span><span style="color: #0000ff">&gt;</span>
+</pre>
+<pre style="background-color: #fbfbfb; margin: 0em; width: 100%; font-family: consolas, &#39;Courier New&#39;, courier, monospace; font-size: 12px">        <span style="color: #0000ff">&lt;</span><span style="color: #800000">ScrollViewer</span> <span style="color: #ff0000">DockPanel</span>.<span style="color: #ff0000">Dock</span>=<span style="color: #0000ff">&quot;Bottom&quot;</span> <span style="color: #ff0000">VerticalScrollBarVisibility</span>=<span style="color: #0000ff">&quot;Auto&quot;</span><span style="color: #0000ff">&gt;</span>
+</pre>
+<pre style="background-color: #fbfbfb; margin: 0em; width: 100%; font-family: consolas, &#39;Courier New&#39;, courier, monospace; font-size: 12px">            <span style="color: #0000ff">&lt;</span><span style="color: #800000">ItemsControl</span> <span style="color: #ff0000">ItemsSource</span>=<span style="color: #0000ff">&quot;{Binding Source={StaticResource animalsBySpecies}}&quot;</span><span style="color: #0000ff">&gt;</span>
+</pre>
+<pre style="background-color: #ffff00; margin: 0em; width: 100%; font-family: consolas, &#39;Courier New&#39;, courier, monospace; font-size: 12px">                <span style="color: #0000ff">&lt;</span><span style="color: #800000">ItemsControl.GroupStyle</span><span style="color: #0000ff">&gt;</span>
+</pre>
+<pre style="background-color: #ffff00; margin: 0em; width: 100%; font-family: consolas, &#39;Courier New&#39;, courier, monospace; font-size: 12px">                    <span style="color: #0000ff">&lt;</span><span style="color: #800000">GroupStyle</span><span style="color: #0000ff">&gt;</span>
+</pre>
+<pre style="background-color: #ffff00; margin: 0em; width: 100%; font-family: consolas, &#39;Courier New&#39;, courier, monospace; font-size: 12px">                        <span style="color: #0000ff">&lt;</span><span style="color: #800000">GroupStyle.ContainerStyle</span><span style="color: #0000ff">&gt;</span>
+</pre>
+<pre style="background-color: #ffff00; margin: 0em; width: 100%; font-family: consolas, &#39;Courier New&#39;, courier, monospace; font-size: 12px">                            <span style="color: #0000ff">&lt;</span><span style="color: #800000">Style</span> <span style="color: #ff0000">TargetType</span>=<span style="color: #0000ff">&quot;{x:Type GroupItem}&quot;</span><span style="color: #0000ff">&gt;</span>
+</pre>
+<pre style="background-color: #ffff00; margin: 0em; width: 100%; font-family: consolas, &#39;Courier New&#39;, courier, monospace; font-size: 12px">                                <span style="color: #0000ff">&lt;</span><span style="color: #800000">Setter</span> <span style="color: #ff0000">Property</span>=<span style="color: #0000ff">&quot;Template&quot;</span><span style="color: #0000ff">&gt;</span>
+</pre>
+<pre style="background-color: #ffff00; margin: 0em; width: 100%; font-family: consolas, &#39;Courier New&#39;, courier, monospace; font-size: 12px">                                    <span style="color: #0000ff">&lt;</span><span style="color: #800000">Setter.Value</span><span style="color: #0000ff">&gt;</span>
+</pre>
+<pre style="background-color: #ffff00; margin: 0em; width: 100%; font-family: consolas, &#39;Courier New&#39;, courier, monospace; font-size: 12px">                                        <span style="color: #0000ff">&lt;</span><span style="color: #800000">ControlTemplate</span> <span style="color: #ff0000">TargetType</span>=<span style="color: #0000ff">&quot;{x:Type GroupItem}&quot;</span><span style="color: #0000ff">&gt;</span>
+</pre>
+<pre style="background-color: #ffff00; margin: 0em; width: 100%; font-family: consolas, &#39;Courier New&#39;, courier, monospace; font-size: 12px">                                            <span style="color: #0000ff">&lt;</span><span style="color: #800000">GroupBox</span> <span style="color: #ff0000">Header</span>=<span style="color: #0000ff">&quot;{Binding Name}&quot;</span><span style="color: #0000ff">&gt;</span>
+</pre>
+<pre style="background-color: #ffff00; margin: 0em; width: 100%; font-family: consolas, &#39;Courier New&#39;, courier, monospace; font-size: 12px">                                                <span style="color: #0000ff">&lt;</span><span style="color: #800000">ItemsPresenter</span> <span style="color: #0000ff">/&gt;</span>
+</pre>
+<pre style="background-color: #ffff00; margin: 0em; width: 100%; font-family: consolas, &#39;Courier New&#39;, courier, monospace; font-size: 12px">                                            <span style="color: #0000ff">&lt;/</span><span style="color: #800000">GroupBox</span><span style="color: #0000ff">&gt;</span>
+</pre>
+<pre style="background-color: #ffff00; margin: 0em; width: 100%; font-family: consolas, &#39;Courier New&#39;, courier, monospace; font-size: 12px">                                        <span style="color: #0000ff">&lt;/</span><span style="color: #800000">ControlTemplate</span><span style="color: #0000ff">&gt;</span>
+</pre>
+<pre style="background-color: #ffff00; margin: 0em; width: 100%; font-family: consolas, &#39;Courier New&#39;, courier, monospace; font-size: 12px">                                    <span style="color: #0000ff">&lt;/</span><span style="color: #800000">Setter.Value</span><span style="color: #0000ff">&gt;</span>
+</pre>
+<pre style="background-color: #ffff00; margin: 0em; width: 100%; font-family: consolas, &#39;Courier New&#39;, courier, monospace; font-size: 12px">                                <span style="color: #0000ff">&lt;/</span><span style="color: #800000">Setter</span><span style="color: #0000ff">&gt;</span>
+</pre>
+<pre style="background-color: #ffff00; margin: 0em; width: 100%; font-family: consolas, &#39;Courier New&#39;, courier, monospace; font-size: 12px">                            <span style="color: #0000ff">&lt;/</span><span style="color: #800000">Style</span><span style="color: #0000ff">&gt;</span>
+</pre>
+<pre style="background-color: #ffff00; margin: 0em; width: 100%; font-family: consolas, &#39;Courier New&#39;, courier, monospace; font-size: 12px">                        <span style="color: #0000ff">&lt;/</span><span style="color: #800000">GroupStyle.ContainerStyle</span><span style="color: #0000ff">&gt;</span>
+</pre>
+<pre style="background-color: #ffff00; margin: 0em; width: 100%; font-family: consolas, &#39;Courier New&#39;, courier, monospace; font-size: 12px">                    <span style="color: #0000ff">&lt;/</span><span style="color: #800000">GroupStyle</span><span style="color: #0000ff">&gt;</span>
+</pre>
+<pre style="background-color: #ffff00; margin: 0em; width: 100%; font-family: consolas, &#39;Courier New&#39;, courier, monospace; font-size: 12px">                <span style="color: #0000ff">&lt;/</span><span style="color: #800000">ItemsControl.GroupStyle</span><span style="color: #0000ff">&gt;</span>
+</pre>
+<pre style="background-color: #fbfbfb; margin: 0em; width: 100%; font-family: consolas, &#39;Courier New&#39;, courier, monospace; font-size: 12px">                <span style="color: #0000ff">&lt;</span><span style="color: #800000">ItemsControl.ItemTemplate</span><span style="color: #0000ff">&gt;</span>
+</pre>
+<pre style="background-color: #fbfbfb; margin: 0em; width: 100%; font-family: consolas, &#39;Courier New&#39;, courier, monospace; font-size: 12px">                    <span style="color: #0000ff">&lt;</span><span style="color: #800000">DataTemplate</span><span style="color: #0000ff">&gt;</span>
+</pre>
+<pre style="background-color: #fbfbfb; margin: 0em; width: 100%; font-family: consolas, &#39;Courier New&#39;, courier, monospace; font-size: 12px">                        <span style="color: #0000ff">&lt;</span><span style="color: #800000">TextBlock</span> <span style="color: #ff0000">Text</span>=<span style="color: #0000ff">&quot;{Binding XPath=@name}&quot;</span> <span style="color: #0000ff">/&gt;</span>
+</pre>
+<pre style="background-color: #fbfbfb; margin: 0em; width: 100%; font-family: consolas, &#39;Courier New&#39;, courier, monospace; font-size: 12px">                    <span style="color: #0000ff">&lt;/</span><span style="color: #800000">DataTemplate</span><span style="color: #0000ff">&gt;</span>
+</pre>
+<pre style="background-color: #fbfbfb; margin: 0em; width: 100%; font-family: consolas, &#39;Courier New&#39;, courier, monospace; font-size: 12px">                <span style="color: #0000ff">&lt;/</span><span style="color: #800000">ItemsControl.ItemTemplate</span><span style="color: #0000ff">&gt;</span>
+</pre>
+<pre style="background-color: #fbfbfb; margin: 0em; width: 100%; font-family: consolas, &#39;Courier New&#39;, courier, monospace; font-size: 12px">            <span style="color: #0000ff">&lt;/</span><span style="color: #800000">ItemsControl</span><span style="color: #0000ff">&gt;</span>
+</pre>
+<pre style="background-color: #fbfbfb; margin: 0em; width: 100%; font-family: consolas, &#39;Courier New&#39;, courier, monospace; font-size: 12px">        <span style="color: #0000ff">&lt;/</span><span style="color: #800000">ScrollViewer</span><span style="color: #0000ff">&gt;</span>
+</pre>
+<pre style="background-color: #fbfbfb; margin: 0em; width: 100%; font-family: consolas, &#39;Courier New&#39;, courier, monospace; font-size: 12px">    <span style="color: #0000ff">&lt;/</span><span style="color: #800000">DockPanel</span><span style="color: #0000ff">&gt;</span>
+</pre>
+<pre style="background-color: #fbfbfb; margin: 0em; width: 100%; font-family: consolas, &#39;Courier New&#39;, courier, monospace; font-size: 12px"><span style="color: #0000ff">&lt;/</span><span style="color: #800000">Page</span><span style="color: #0000ff">&gt;</span>
+</pre>
+<pre style="background-color: #fbfbfb; margin: 0em; width: 100%; font-family: consolas, &#39;Courier New&#39;, courier, monospace; font-size: 12px"></pre>
+<pre style="background-color: #fbfbfb; margin: 0em; width: 100%; font-family: consolas, &#39;Courier New&#39;, courier, monospace; font-size: 12px"></pre>
+<p>&#160;</p>
+<p>We’ve told WPF, take all of the Groups out of the CollectionViewSource and put each into a Container (just like it would with individual items), that container being a GroupItem instead of a ListItem.&#160; Style the GroupItem such that its Template is a GroupBox with an ItemsPresenter inside to display each individual item.&#160; You can do a lot with this and it also works with the GridView form of a ListView.</p>
+<p><a href="http://cromwellhaus.com/wp-content/uploads/2012/06/SNAGHTML5b5f65d.png"><img style="background-image: none; border-right-width: 0px; margin: 4px 10px; padding-left: 0px; padding-right: 0px; display: inline; border-top-width: 0px; border-bottom-width: 0px; border-left-width: 0px; padding-top: 0px" title="SNAGHTML5b5f65d" border="0" alt="SNAGHTML5b5f65d" src="http://cromwellhaus.com/wp-content/uploads/2012/06/SNAGHTML5b5f65d_thumb.png" width="644" height="407" /></a></p>
+							<div class="clear"></div>
+						</div><!-- .entry-content -->
+						<footer class="entry-utility">
+																							<div class="social-bookmarks">
+			<p>Did you like this article? Share it with your friends!</p>
+							<div class="facebook-like">
+					<div id="fb-root"></div>
+					<script>
+						(function(d, s, id) {
+							var js, fjs = d.getElementsByTagName(s)[0];
+							if (d.getElementById(id)) return;
+							js = d.createElement(s); js.id = id;
+							js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+							fjs.parentNode.insertBefore(js, fjs);
+						}(document, 'script', 'facebook-jssdk'));
+					</script>
+					<div class="fb-like" data-href="http://cromwellhaus.com/2010/03/grouping-is-crazy-easy-in-wpf/" data-send="false" data-layout="button_count" data-width="110" data-show-faces="false" data-font="arial"></div>
+				</div><!-- .facebook-like -->
+										<div class="twitter-button">
+					<a href="https://twitter.com/share" class="twitter-share-button" data-url="http://cromwellhaus.com/2010/03/grouping-is-crazy-easy-in-wpf/">Tweet</a>
+					<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+				</div><!-- .twitter-button -->
+										<div class="google-plusone">
+					<div class="g-plusone" data-size="medium" data-href="http://cromwellhaus.com/2010/03/grouping-is-crazy-easy-in-wpf/"></div>
+					<script type="text/javascript">
+						(function() {
+							var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+							po.src = 'https://apis.google.com/js/plusone.js';
+							var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+						})();
+					</script>
+				</div><!-- .google-plusone -->
+									<div class="clear"></div>
+		</div><!-- .social-bookmarks -->
+										<div class="entry-author">
+			<img alt='' src='http://0.gravatar.com/avatar/ef8a1e8b2845aee4bab6cbde882c89a0?s=96&amp;d=http%3A%2F%2F0.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D96&amp;r=G' class='avatar avatar-96 photo' height='96' width='96' />			<h3 class="author vcard">Written by <span class="fn"><a href="http://cromwellhaus.com/author/cromwellryan/" title="Posts by cromwellryan" rel="author">cromwellryan</a></span></h3>
+			<p class="author-bio"></p>
+			<div class="clear"></div>
+		</div><!-- .entry-author -->
+							</footer><!-- .entry-utility -->
+					</div><!-- .entry -->
+					
+<div id="disqus_thread">
+                    <div id="dsq-content">
+
+
+            <ul id="dsq-comments">
+                    <li class="comment even thread-even depth-1" id="dsq-comment-83">
+        <div id="dsq-comment-header-83" class="dsq-comment-header">
+            <cite id="dsq-cite-83">
+                <span id="dsq-author-user-83">Alex</span>
+            </cite>
+        </div>
+        <div id="dsq-comment-body-83" class="dsq-comment-body">
+            <div id="dsq-comment-message-83" class="dsq-comment-message"><p>This is excellent, thanks for your help&#8230;<br />
+I have a question&#8230;!<br />
+Can you control the style of the group if you have more than 1 group?<br />
+Example: If you added a Gender field to the grouping&#8230;<br />
+Could you have Species in Bold, font size 20 and Gender in Italics, font size 12&#8230;?</p>
+</div>
+        </div>
+
+    </li><!-- #comment-## -->
+    <li class="comment odd alt thread-odd thread-alt depth-1" id="dsq-comment-84">
+        <div id="dsq-comment-header-84" class="dsq-comment-header">
+            <cite id="dsq-cite-84">
+                <span id="dsq-author-user-84">Rick O&#8217;Shay</span>
+            </cite>
+        </div>
+        <div id="dsq-comment-body-84" class="dsq-comment-body">
+            <div id="dsq-comment-message-84" class="dsq-comment-message"><p>All the accolades for crazy-easy make it all the more irritating that this obvious problem is not addressed in Silverlight. In fact, why even mention jQuery and MVC as WPF is not in that space, and the technology that is does not support grouping.</p>
+</div>
+        </div>
+
+    </li><!-- #comment-## -->
+    <li class="comment even thread-even depth-1" id="dsq-comment-85">
+        <div id="dsq-comment-header-85" class="dsq-comment-header">
+            <cite id="dsq-cite-85">
+http://blog.cromwellhaus.com                <span id="dsq-author-user-85">ryan</span>
+            </cite>
+        </div>
+        <div id="dsq-comment-body-85" class="dsq-comment-body">
+            <div id="dsq-comment-message-85" class="dsq-comment-message"><p>Silverlight not supporting many of the little things in WPF is quite irritating, I agree.</p>
+<p>As for the reference to Repeaters and jQuery, I&#8217;m simply making an analogy to the things we found difficult in WebForms world that have been eased with jQuery.  Similarly many things that were difficult with WinForms are now very easy with WPF (and often Silverlight :))</p>
+</div>
+        </div>
+
+    </li><!-- #comment-## -->
+    <li class="comment odd alt thread-odd thread-alt depth-1" id="dsq-comment-421">
+        <div id="dsq-comment-header-421" class="dsq-comment-header">
+            <cite id="dsq-cite-421">
+                <span id="dsq-author-user-421">Artiom</span>
+            </cite>
+        </div>
+        <div id="dsq-comment-body-421" class="dsq-comment-body">
+            <div id="dsq-comment-message-421" class="dsq-comment-message"><p>Well done, well done.</p>
+</div>
+        </div>
+
+    </li><!-- #comment-## -->
+    <li class="comment even thread-even depth-1" id="dsq-comment-440">
+        <div id="dsq-comment-header-440" class="dsq-comment-header">
+            <cite id="dsq-cite-440">
+                <span id="dsq-author-user-440">Alexander Schultz</span>
+            </cite>
+        </div>
+        <div id="dsq-comment-body-440" class="dsq-comment-body">
+            <div id="dsq-comment-message-440" class="dsq-comment-message"><p>Thanks, this is exactly what I was looking for!</p>
+</div>
+        </div>
+
+    </li><!-- #comment-## -->
+    <li class="comment odd alt thread-odd thread-alt depth-1" id="dsq-comment-448">
+        <div id="dsq-comment-header-448" class="dsq-comment-header">
+            <cite id="dsq-cite-448">
+                <span id="dsq-author-user-448">Aaron</span>
+            </cite>
+        </div>
+        <div id="dsq-comment-body-448" class="dsq-comment-body">
+            <div id="dsq-comment-message-448" class="dsq-comment-message"><p>How about multiple groupings where each group has its own data template?  I can&#8217;t find a way to make it work&#8230;</p>
+</div>
+        </div>
+
+    <ul class="children">
+    <li class="comment even depth-2" id="dsq-comment-451">
+        <div id="dsq-comment-header-451" class="dsq-comment-header">
+            <cite id="dsq-cite-451">
+                <span id="dsq-author-user-451">SilverX</span>
+            </cite>
+        </div>
+        <div id="dsq-comment-body-451" class="dsq-comment-body">
+            <div id="dsq-comment-message-451" class="dsq-comment-message"><p>I would use GroupStyleSelector property, it works like a TemplateSelector</p>
+</div>
+        </div>
+
+    </li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+    <li class="comment odd alt thread-even depth-1" id="dsq-comment-460">
+        <div id="dsq-comment-header-460" class="dsq-comment-header">
+            <cite id="dsq-cite-460">
+                <span id="dsq-author-user-460">Stirredo</span>
+            </cite>
+        </div>
+        <div id="dsq-comment-body-460" class="dsq-comment-body">
+            <div id="dsq-comment-message-460" class="dsq-comment-message"><p>I just signed up to say this:</p>
+<p>That yellow hightlighting, Please change it. It burns my eyes. </p>
+<p>Nice article, though.</p>
+</div>
+        </div>
+
+    </li><!-- #comment-## -->
+    <li class="comment even thread-odd thread-alt depth-1" id="dsq-comment-533">
+        <div id="dsq-comment-header-533" class="dsq-comment-header">
+            <cite id="dsq-cite-533">
+                <span id="dsq-author-user-533">TomerBu</span>
+            </cite>
+        </div>
+        <div id="dsq-comment-body-533" class="dsq-comment-body">
+            <div id="dsq-comment-message-533" class="dsq-comment-message"><p>Thanks! Great tutorial.</p>
+</div>
+        </div>
+
+    </li><!-- #comment-## -->
+    <li class="comment odd alt thread-even depth-1" id="dsq-comment-537">
+        <div id="dsq-comment-header-537" class="dsq-comment-header">
+            <cite id="dsq-cite-537">
+                <span id="dsq-author-user-537">Ravi</span>
+            </cite>
+        </div>
+        <div id="dsq-comment-body-537" class="dsq-comment-body">
+            <div id="dsq-comment-message-537" class="dsq-comment-message"><p>Thanks</p>
+</div>
+        </div>
+
+    <ul class="children">
+    <li class="comment even depth-2" id="dsq-comment-538">
+        <div id="dsq-comment-header-538" class="dsq-comment-header">
+            <cite id="dsq-cite-538">
+                <span id="dsq-author-user-538">cromwellryan</span>
+            </cite>
+        </div>
+        <div id="dsq-comment-body-538" class="dsq-comment-body">
+            <div id="dsq-comment-message-538" class="dsq-comment-message"><p>NP &#8211; thanks for the comment <img src="http://cromwellhaus.com/wp-includes/images/smilies/icon_smile.gif" alt=":)" class="wp-smiley" /> </p>
+</div>
+        </div>
+
+    </li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+    <li class="comment odd alt thread-odd thread-alt depth-1" id="dsq-comment-540">
+        <div id="dsq-comment-header-540" class="dsq-comment-header">
+            <cite id="dsq-cite-540">
+                <span id="dsq-author-user-540">Arnaud Weil</span>
+            </cite>
+        </div>
+        <div id="dsq-comment-body-540" class="dsq-comment-body">
+            <div id="dsq-comment-message-540" class="dsq-comment-message"><p>Love the way you write your article, you make it cristal clear and easy to follow. Plus love the instanciation from whithin the XAML. I think you saved me some time fighting with CollectionViewSource.</p>
+</div>
+        </div>
+
+    </li><!-- #comment-## -->
+            </ul>
+
+
+        </div>
+
+    </div>
+
+<script type="text/javascript">
+/* <![CDATA[ */
+    var disqus_url = 'http://cromwellhaus.com/2010/03/grouping-is-crazy-easy-in-wpf/';
+    var disqus_identifier = '773 http://blog.cromwellhaus.com/index.php/2010/03/grouping-is-crazy-easy-in-wpf/';
+    var disqus_container_id = 'disqus_thread';
+    var disqus_domain = 'disqus.com';
+    var disqus_shortname = 'cromwellhaus';
+    var disqus_title = "Grouping is crazy easy in WPF";
+        var disqus_config = function () {
+        var config = this; // Access to the config object
+        config.language = '';
+
+        /*
+           All currently supported events:
+            * preData — fires just before we request for initial data
+            * preInit - fires after we get initial data but before we load any dependencies
+            * onInit  - fires when all dependencies are resolved but before dtpl template is rendered
+            * afterRender - fires when template is rendered but before we show it
+            * onReady - everything is done
+         */
+
+        config.callbacks.preData.push(function() {
+            // clear out the container (its filled for SEO/legacy purposes)
+            document.getElementById(disqus_container_id).innerHTML = '';
+        });
+                config.callbacks.onReady.push(function() {
+            // sync comments in the background so we don't block the page
+            var script = document.createElement('script');
+            script.async = true;
+            script.src = '?cf_action=sync_comments&post_id=773';
+
+            var firstScript = document.getElementsByTagName( "script" )[0];
+            firstScript.parentNode.insertBefore(script, firstScript);
+        });
+                    };
+/* ]]> */
+</script>
+
+<script type="text/javascript">
+/* <![CDATA[ */
+    var DsqLocal = {
+        'trackbacks': [
+        ],
+        'trackback_url': "http:\/\/cromwellhaus.com\/2010\/03\/grouping-is-crazy-easy-in-wpf\/trackback\/"    };
+/* ]]> */
+</script>
+
+<script type="text/javascript">
+/* <![CDATA[ */
+(function() {
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.' + 'disqus.com' + '/embed.js?pname=wordpress&pver=2.74';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();
+/* ]]> */
+</script>
+				</article><!-- .post -->
+					</section><!-- #content -->
+			</div><!-- #container -->
+				<div id="footer">
+						<div id="copyright">
+				<p class="copyright twocol">© 2014 Ryan Cromwell</p>
+									<p class="credits twocol">
+																															Powered by <a href="http://www.onedesigns.com/wordpress-themes/pinboard" title="Pinboard Theme">Pinboard Theme</a> by <a href="http://www.onedesigns.com/" title="One Designs">One Designs</a>											</p>
+								<div class="clear"></div>
+			</div><!-- #copyright -->
+		</div><!-- #footer -->
+	</div><!-- #wrapper -->
+<script type='text/javascript'>
+/* <![CDATA[ */
+var mejsL10n = {"language":"en-US","strings":{"Close":"Close","Fullscreen":"Fullscreen","Download File":"Download File","Download Video":"Download Video","Play\/Pause":"Play\/Pause","Mute Toggle":"Mute Toggle","None":"None","Turn off Fullscreen":"Turn off Fullscreen","Go Fullscreen":"Go Fullscreen","Unmute":"Unmute","Mute":"Mute","Captions\/Subtitles":"Captions\/Subtitles"}};
+/* ]]> */
+</script>
+<script type='text/javascript' src='http://cromwellhaus.com/wp-includes/js/mediaelement/mediaelement-and-player.min.js?ver=2.13.0'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var _wpmejsSettings = {"pluginPath":"\/wp-includes\/js\/mediaelement\/"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='http://cromwellhaus.com/wp-includes/js/mediaelement/wp-mediaelement.js?ver=3.8.1'></script>
+</body>
+</html>
+<!-- Performance optimized by W3 Total Cache. Learn more: http://www.w3-edge.com/wordpress-plugins/
+
+Page Caching using disk: enhanced
+
+ Served from: cromwellhaus.com @ 2014-02-23 20:23:15 by W3 Total Cache -->

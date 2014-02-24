@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>  Presentations</title>
+<link rel="profile" href="http://gmpg.org/xfn/11" />
+<link rel="pingback" href="http://cromwellhaus.com/xmlrpc.php" />
+<link rel="alternate" type="application/rss+xml" title="Ryan Cromwell &raquo; Feed" href="http://cromwellhaus.com/feed/" />
+<link rel="alternate" type="application/rss+xml" title="Ryan Cromwell &raquo; Comments Feed" href="http://cromwellhaus.com/comments/feed/" />
+
+            <script type="text/javascript">//<![CDATA[
+            // Google Analytics for WordPress by Yoast v4.3.5 | http://yoast.com/wordpress/google-analytics/
+            var _gaq = _gaq || [];
+            _gaq.push(['_setAccount', 'UA-4332588-1']);
+				            _gaq.push(['_trackPageview']);
+            (function () {
+                var ga = document.createElement('script');
+                ga.type = 'text/javascript';
+                ga.async = true;
+                ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+
+                var s = document.getElementsByTagName('script')[0];
+                s.parentNode.insertBefore(ga, s);
+            })();
+            //]]></script>
+			<link rel='stylesheet' id='pinboard-web-font-css'  href='http://fonts.googleapis.com/css?family=Open+Sans:300,300italic,regular,italic,600,600italic|Oswald:300,300italic,regular,italic,600,600italic&#038;subset=latin' type='text/css' media='all' />
+<link rel='stylesheet' id='pinboard-css'  href='http://cromwellhaus.com/wp-content/themes/pinboard/style.css' type='text/css' media='all' />
+<link rel='stylesheet' id='colorbox-css'  href='http://cromwellhaus.com/wp-content/themes/pinboard/styles/colorbox.css' type='text/css' media='all' />
+<link rel='stylesheet' id='mediaelementplayer-css'  href='http://cromwellhaus.com/wp-content/themes/pinboard/styles/mediaelementplayer.css' type='text/css' media='all' />
+	<!--[if lt IE 9]>
+	<script src="http://cromwellhaus.com/wp-content/themes/pinboard/scripts/html5.js" type="text/javascript"></script>
+	<![endif]-->
+<script type='text/javascript' src='http://cromwellhaus.com/wp-content/themes/pinboard/scripts/ios-orientationchange-fix.js'></script>
+<script type='text/javascript' src='http://cromwellhaus.com/wp-includes/js/jquery/jquery.js?ver=1.10.2'></script>
+<script type='text/javascript' src='http://cromwellhaus.com/wp-includes/js/jquery/jquery-migrate.min.js?ver=1.2.1'></script>
+<script type='text/javascript' src='http://cromwellhaus.com/wp-content/themes/pinboard/scripts/jquery.flexslider-min.js'></script>
+<script type='text/javascript' src='http://cromwellhaus.com/wp-content/themes/pinboard/scripts/fitvids.js'></script>
+<script type='text/javascript' src='http://cromwellhaus.com/wp-content/themes/pinboard/scripts/jquery.colorbox.js'></script>
+<script type='text/javascript' src='http://cromwellhaus.com/wp-includes/js/comment-reply.min.js?ver=3.8.1'></script>
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://cromwellhaus.com/xmlrpc.php?rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://cromwellhaus.com/wp-includes/wlwmanifest.xml" /> 
+<link rel='prev' title='Bio' href='http://cromwellhaus.com/about/' />
+<meta name="generator" content="WordPress 3.8.1" />
+<link rel='canonical' href='http://cromwellhaus.com/presentations/' />
+<link rel='shortlink' href='http://cromwellhaus.com/?p=801' />
+<meta property="og:title" content="Presentations" /><meta property="og:type" content="article" /><meta property="og:url" content="http://cromwellhaus.com/presentations/" /><meta property="og:site_name" content="Ryan Cromwell" /><meta property="og:description" content="Code Topics Quick Sip of Elixir Concurrency and distribution are the name of the game and Erlang has you covered.  But oye that syntax!  Elixir is here to cure all ills with a buttery smooth language that compiles directly to Erlang byte code. In this 60 minute session, we&#039;ll explore &hellip;" /><script>
+/* <![CDATA[ */
+	jQuery(document).ready(function($) {
+		$('#access .menu > li > a').each(function() {
+			var title = $(this).attr('title');
+			if(typeof title !== 'undefined' && title !== false) {
+				$(this).append('<br /> <span>'+title+'</span>');
+				$(this).removeAttr('title');
+			}
+		});
+		function pinboard_move_elements(container) {
+			if( container.hasClass('onecol') ) {
+				var thumb = $('.entry-thumbnail', container);
+				if('undefined' !== typeof thumb)
+					$('.entry-container', container).before(thumb);
+				var video = $('.entry-attachment', container);
+				if('undefined' !== typeof video)
+					$('.entry-container', container).before(video);
+				var gallery = $('.post-gallery', container);
+				if('undefined' !== typeof gallery)
+					$('.entry-container', container).before(gallery);
+				var meta = $('.entry-meta', container);
+				if('undefined' !== typeof meta)
+					$('.entry-container', container).after(meta);
+			}
+		}
+		function pinboard_restore_elements(container) {
+			if( container.hasClass('onecol') ) {
+				var thumb = $('.entry-thumbnail', container);
+				if('undefined' !== typeof thumb)
+					$('.entry-header', container).after(thumb);
+				var video = $('.entry-attachment', container);
+				if('undefined' !== typeof video)
+					$('.entry-header', container).after(video);
+				var gallery = $('.post-gallery', container);
+				if('undefined' !== typeof gallery)
+					$('.entry-header', container).after(gallery);
+				var meta = $('.entry-meta', container);
+				if('undefined' !== typeof meta)
+					$('.entry-header', container).append(meta);
+				else
+					$('.entry-header', container).html(meta.html());
+			}
+		}
+		if( ($(window).width() > 960) || ($(document).width() > 960) ) {
+			// Viewport is greater than tablet: portrait
+		} else {
+			$('#content .hentry').each(function() {
+				pinboard_move_elements($(this));
+			});
+		}
+		$(window).resize(function() {
+			if( ($(window).width() > 960) || ($(document).width() > 960) ) {
+									$('.page-template-template-full-width-php #content .hentry, .page-template-template-blog-full-width-php #content .hentry, .page-template-template-blog-four-col-php #content .hentry').each(function() {
+						pinboard_restore_elements($(this));
+					});
+							} else {
+				$('#content .hentry').each(function() {
+					pinboard_move_elements($(this));
+				});
+			}
+			if( ($(window).width() > 760) || ($(document).width() > 760) ) {
+				var maxh = 0;
+				$('#access .menu > li > a').each(function() {
+					if(parseInt($(this).css('height'))>maxh) {
+						maxh = parseInt($(this).css('height'));
+					}
+				});
+				$('#access .menu > li > a').css('height', maxh);
+			} else {
+				$('#access .menu > li > a').css('height', 'auto');
+			}
+		});
+		if( ($(window).width() > 760) || ($(document).width() > 760) ) {
+			var maxh = 0;
+			$('#access .menu > li > a').each(function() {
+				var title = $(this).attr('title');
+				if(typeof title !== 'undefined' && title !== false) {
+					$(this).append('<br /> <span>'+title+'</span>');
+					$(this).removeAttr('title');
+				}
+				if(parseInt($(this).css('height'))>maxh) {
+					maxh = parseInt($(this).css('height'));
+				}
+			});
+			$('#access .menu > li > a').css('height', maxh);
+							$('#access li').mouseenter(function() {
+					$(this).children('ul').css('display', 'none').stop(true, true).fadeIn(250).css('display', 'block').children('ul').css('display', 'none');
+				});
+				$('#access li').mouseleave(function() {
+					$(this).children('ul').stop(true, true).fadeOut(250).css('display', 'block');
+				});
+					} else {
+			$('#access li').each(function() {
+				if($(this).children('ul').length)
+					$(this).append('<span class="drop-down-toggle"><span class="drop-down-arrow"></span></span>');
+			});
+			$('.drop-down-toggle').click(function() {
+				$(this).parent().children('ul').slideToggle(250);
+			});
+		}
+						$('audio,video').mediaelementplayer({
+			videoWidth: '100%',
+			videoHeight: '100%',
+			audioWidth: '100%',
+			alwaysShowControls: true,
+			features: ['playpause','progress','tracks','volume'],
+			videoVolume: 'horizontal'
+		});
+		$(".entry-attachment, .entry-content").fitVids({ customSelector: "iframe[src*='wordpress.tv'], iframe[src*='www.dailymotion.com'], iframe[src*='blip.tv'], iframe[src*='www.viddler.com']"});
+	});
+	jQuery(window).load(function() {
+					jQuery('.entry-content a[href$=".jpg"],.entry-content a[href$=".jpeg"],.entry-content a[href$=".png"],.entry-content a[href$=".gif"],a.colorbox').colorbox({
+				maxWidth: '100%',
+				maxHeight: '100%',
+			});
+			});
+/* ]]> */
+</script>
+<style type="text/css">
+																																											.gist pre { text-align: left }</style>
+<style type="text/css">
+	#site-title a,
+	#site-description {
+		color:#333333;
+	}
+</style>
+<style type="text/css" id="custom-background-css">
+body.custom-background { background-image: url('http://cromwellhaus.com/wp-content/uploads/2014/02/dark-subtle.png'); background-repeat: repeat; background-position: top left; background-attachment: scroll; }
+</style>
+</head>
+
+<body class="page page-id-801 page-template-default custom-background page-template-template-full-width-php">
+	<div id="wrapper">
+		<header id="header">
+			<div id="site-title">
+								<a class="home" href="http://cromwellhaus.com/" rel="home">Ryan Cromwell</a>
+			</div>
+							<div id="site-description">Big vision. Small changes.  Learn by shipping.</div>
+							<form role="search" method="get" id="searchform" action="http://cromwellhaus.com/" >
+	<input type="text" value="" placeholder="Search this website&#8230;" name="s" id="s" />
+	<input type="submit" id="searchsubmit" value="Search" />
+</form>			<div id="social-media-icons">
+									<a class="social-media-icon twitter" href="http://twitter.com/cromwellryan">Twitter</a>
+																		<a class="social-media-icon youtube" href="http://www.youtube.com/channel/UCulXjBNxl_oe4_gjQV1jb2Q">Vimeo</a>
+															<a class="social-media-icon linkedin" href="http://www.linkedin.com/in/cromwellryan">LinkedIn</a>
+					</div>
+				<div class="clear"></div>
+			<nav id="access">
+				<a class="nav-show" href="#access">Show Navigation</a>
+				<a class="nav-hide" href="#nogo">Hide Navigation</a>
+				<div class="menu"><ul><li class="page_item page-item-834"><a href="http://cromwellhaus.com/about/">Bio</a></li><li class="page_item page-item-801 current_page_item"><a href="http://cromwellhaus.com/presentations/">Presentations</a></li></ul></div>
+				<div class="clear"></div>
+			</nav><!-- #access -->
+		</header><!-- #header -->		<div id="container">
+		<section id="content" class="column onecol">
+							<article class="post-801 page type-page status-publish hentry column onecol" id="post-801">
+					<div class="entry">
+						<header class="entry-header">
+							<h1 class="entry-title">Presentations</h1>
+						</header><!-- .entry-header -->
+						<div class="entry-content">
+							<h2><span style="text-decoration: underline;">Code Topics</span></h2>
+<p><span style="font-weight: 600;">Quick Sip of Elixir</span></p>
+<p>Concurrency and distribution are the name of the game and Erlang has you covered.  But oye that syntax!  Elixir is here to cure all ills with a buttery smooth language that compiles directly to Erlang byte code.</p>
+<p>In this 60 minute session, we&#8217;ll explore Elixir, how it can support thousand and millions of processes with ease and why you should explore it as your next language.</p>
+<p><strong>Get Feature Focused: Experiences Organizing Based on Feature Rather Than Architecture</strong></p>
+<p>If you look at your application, could you point to the search feature? What about the login feature? Would you have to scroll through multiple folders to pick out the pieces that make up your home page?</p>
+<p>Consistency is the road to simplicity and the consolidation around &#8216;MVC&#8217; frameworks for building web applications has brought a consistency to our application architectures. This is great, but what ever happened to common closure and Common Reuse?</p>
+<p>As more organizations move towards Scrum, Kanban, XP, continuous delivery, etc. the often orthogonal relationship between features and our architecture is becoming more pronounced. In this session I will discuss our experiences building applications organized by feature rather than architecture and the impacts on our thinking.</p>
+<p><strong>Test Driving Your Web API from the Outside In</strong></p>
+<p>Unit Tests get all the glory, but there’s more to building a test suite than Unit Testing.  What about Integration Tests?  And lets not forget Acceptance Tests.</p>
+<p>In this session the presenter will walk you through building a Web API built in <a href="http://www.asp.net/web-api" target="_blank">ASP.Net WebAPI</a> from the outside in.  We’ll use <a href="http://specflow.org" target="_blank">Specflow</a> and a pattern similar to PageObjects to define our acceptance tests.  We’ll then build out the implementation with integration and unit tests, refactoring along the way.  Leaving this session you will have an understanding of tools available to target the full <a href="http://www.mountaingoatsoftware.com/blog/the-forgotten-layer-of-the-test-automation-pyramid" target="_blank">Testing Triangle</a> for your Web API.</p>
+<p><strong>Selenium + Specflow: ATDD for .Net</strong></p>
+<p>(Abstract coming soon!)</p>
+<h2></h2>
+<h2><span style="text-decoration: underline;">Agile Topics</span></h2>
+<p><strong>Scrumdamentals</strong></p>
+<p><strong></strong>Is Agile where you want to be?  Do you know what it takes to get started?  Not ready to drop the dough for a class or coach?  This session will introduce you to the foundations of Agile and Scrum, including</p>
+<ul>
+<li>Origins of Agile</li>
+<li>Scrum origins, principals and theory</li>
+<li>Scrum roles, events and practices</li>
+<li>Self-organization</li>
+<li>Steps toward becoming Agile</li>
+</ul>
+<div><b>Avoiding Scrummerfall</b></div>
+<div>Agile is where you want to be and Scrum was going to get there.  Or so you thought.  We know that Scrum is the most popular Agile framework, but many apply it as a thin veneer over traditional ways.  Sprints become meaningless, retrospectives are a bore.  In this session we&#8217;ll walk through common challenges in adopting Scrum, how to recognize them and what you can do to get past each.</div>
+<p><strong>Will the Real Scrum Master Please Stand Up  </strong></p>
+<p><strong></strong>Scrum Master is the most challenging role in the industry today. In this 60 minute session we will look at the skills traits and responsibilities of a team shepherd, how they enhance an organization and how you can begin the path to fill this difficult and essential team role.</p>
+<h2></h2>
+<h2><span style="text-decoration: underline;">Visual Studio &amp; Team Foundation Server Topics</span></h2>
+<p><strong>Git in my TFS</strong></p>
+<p>Your a gitster in a land of Team Foundation Server. You want your local branches, git-flow and rebasing, but the rest of the neighborhood isn&#8217;t ready. What do you do? In this session we&#8217;ll explore the new open-source Git-Tf project.  Git-Tf is a set of cross-platform, command line tools that facilitate sharing of changes between TFS and Git.</p>
+<p>We&#8217;ll then look at the recently announced native Git repositories in TFS, what that might mean for your organization and how you can get started today.</p>
+<p><strong>Team Foundation Server: Open the Robe</strong></p>
+<p>Your craft is code.  Your tools are your most prized possessions.  Learn to make them work for you, not against you.  Having created automated and continuous build and deploy systems going on a decade, the presenter will provide a retrospective on the experiences of deploying, training and using Team Foundation Server (TFS) for the last 5 years.  An open discussion session, we&#8217;ll review those things TFS does well and those it does not.</p>
+<p><strong>Scrum with Visual Studio and Team Foundation Server</strong></p>
+<p>Team Foundation Server is built from the ground up to be customized to your organization’s development methodology. With the release of the Microsoft Visual Studio Scrum 1.0 process template we discuss enabling Scrum teams by getting out of their way.</p>
+<p><strong>Get Out of the Way: Effective Team Foundation Server Source Control</strong></p>
+<p>You&#8217;ve rid yourself of VSS and scoff at SVN, but how are you better off with TFS? Come learn strategies and techniques for a smooth transition to Team Foundation Server source control.</p>
+<p><strong>Professional Scrum Development in Visual Studio TFS 2012</strong><br />
+Agile is where teams and organizations want to be and Scrum is a tool to help get you there. Microsoft uses Scrum, and many more are adopting Scrum to improve their ability to deliver innovative software. Visual Studio and Team Foundation Server 2012 continue the focus of enabling Agile teams. In this session you&#8217;ll see how you can adopt Scrum with the now default Scrum process template and streamlined Agile planning tools. We will create and groom our Product Backlog, look at support for multiple teams, create forecasts, and execute a Sprint.</p>
+<p><strong>Introducing the New, Extensible Visual Studio 2012 Test Explorer</strong><br />
+Quality control (post-development testing) is a thing of the past. Reaching Agility requires building quality into the development process. Visual Studio 2012 tightens the quality feedback loop with the new Test Explorer that enables continuous testing across an open set of testing frameworks that currently includes xUnit, NUnit, MSTest, Jasmine, and more. In this session we’ll look at how you can use this new Test Explorer to deliver and refactor with confidence at every moment.</p>
+							<div class="clear"></div>
+						</div><!-- .entry-content -->
+											</div><!-- .entry -->
+					
+
+						</article><!-- .post -->
+					</section><!-- #content -->
+				<div class="clear"></div>
+	</div><!-- #container -->
+				<div id="footer">
+						<div id="copyright">
+				<p class="copyright twocol">© 2014 Ryan Cromwell</p>
+									<p class="credits twocol">
+																															Powered by <a href="http://www.onedesigns.com/wordpress-themes/pinboard" title="Pinboard Theme">Pinboard Theme</a> by <a href="http://www.onedesigns.com/" title="One Designs">One Designs</a>											</p>
+								<div class="clear"></div>
+			</div><!-- #copyright -->
+		</div><!-- #footer -->
+	</div><!-- #wrapper -->
+<script type='text/javascript'>
+/* <![CDATA[ */
+var mejsL10n = {"language":"en-US","strings":{"Close":"Close","Fullscreen":"Fullscreen","Download File":"Download File","Download Video":"Download Video","Play\/Pause":"Play\/Pause","Mute Toggle":"Mute Toggle","None":"None","Turn off Fullscreen":"Turn off Fullscreen","Go Fullscreen":"Go Fullscreen","Unmute":"Unmute","Mute":"Mute","Captions\/Subtitles":"Captions\/Subtitles"}};
+/* ]]> */
+</script>
+<script type='text/javascript' src='http://cromwellhaus.com/wp-includes/js/mediaelement/mediaelement-and-player.min.js?ver=2.13.0'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var _wpmejsSettings = {"pluginPath":"\/wp-includes\/js\/mediaelement\/"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='http://cromwellhaus.com/wp-includes/js/mediaelement/wp-mediaelement.js?ver=3.8.1'></script>
+</body>
+</html>
+<!-- Performance optimized by W3 Total Cache. Learn more: http://www.w3-edge.com/wordpress-plugins/
+
+Page Caching using disk: enhanced
+
+ Served from: cromwellhaus.com @ 2014-02-23 16:43:13 by W3 Total Cache -->
